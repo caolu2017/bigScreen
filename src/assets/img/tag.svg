@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="44" height="44"></rect>
+        <rect id="path-3" x="0" y="0" width="19.249405" height="22.4786004"></rect>
+        <rect id="path-5" x="0" y="0" width="15.2403168" height="13.1332912"></rect>
+    </defs>
+    <g id="正式页面" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="财务驾驶舱-指标预警" transform="translate(-62.000000, -207.000000)">
+            <g id="T标识-绿色" transform="translate(62.000000, 207.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="路径" fill-opacity="0.4" fill="#000000" xlink:href="#path-1"></use>
+                <g id="Frame" mask="url(#mask-2)">
+                    <g transform="translate(12.221436, 10.323318)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="路径" stroke="none" fill="none"></g>
+                        <g id="分组-1" opacity="0.8" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-4)">
+                            <g transform="translate(0.298787, 4.672655)">
+                                <mask id="mask-6" fill="white">
+                                    <use xlink:href="#path-5"></use>
+                                </mask>
+                                <g id="路径" stroke="none" fill="none"></g>
+                                <path d="M7.75,9.43 L14.24,9.43 L15.24,4.76 L8.75,4.76 L7.75,9.43 Z" id="路径" stroke="none" fill="#19FCDE" fill-rule="evenodd" opacity="0.5" mask="url(#mask-6)"></path>
+                                <path d="M0,12.96 L0,13 C0,13.07 0.06,13.13 0.14,13.13 L4.8,13.13 L4.84,13.13 C4.89,13.11 4.93,13.08 4.94,13.03 L7.47,0.17 L7.47,0.14 C7.47,0.06 7.41,0 7.33,0 L3.09,0 L3.05,0.01 C3,0.02 2.96,0.06 2.95,0.11 L0,12.96 Z" id="路径" stroke="none" fill="#19FCDE" fill-rule="evenodd" mask="url(#mask-6)"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

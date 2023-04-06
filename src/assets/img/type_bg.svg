@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="134px" height="48px" viewBox="0 0 134 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <polygon id="path-1" points="1755.50066 76.0002471 1809.50066 76.0002471 1808.00066 72.0002471 1838.57566 72.1162471 1852.00066 109.000247 1841.00066 120.000247 1731.44905 119.883753 1718 83.363 1718 83.256 1729.255 72 1754.00066 72.0002471"></polygon>
+        <filter x="-3.4%" y="-9.4%" width="106.7%" height="118.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="4" operator="erode" in="SourceAlpha" result="shadowSpreadInner1"></feMorphology>
+            <feGaussianBlur stdDeviation="2.5" in="shadowSpreadInner1" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.647058824   0 0 0 0 0.564705882  0 0 0 0.7 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="正式页面" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.400739397">
+        <g id="路径备份-9" transform="translate(-1718.000000, -72.000000)">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <path stroke="#00A590" stroke-width="1" d="M1753.65415,72.5 L1755.15415,76.5002471 L1810.22214,76.5002471 L1808.72317,72.5027506 L1838.22507,72.6149178 L1851.42186,108.871934 L1840.79377,119.500027 L1731.79789,119.384124 L1718.57915,83.4887981 L1729.46351,72.5 L1753.65415,72.5 Z" stroke-linejoin="square"></path>
+        </g>
+    </g>
+</svg>

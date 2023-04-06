@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1884px" height="1053px" viewBox="0 0 1884 1053" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="1870.37982" height="22.9237025"></rect>
+        <rect id="path-3" x="0" y="0" width="10" height="10"></rect>
+        <rect id="path-5" x="0" y="0" width="10" height="10"></rect>
+        <rect id="path-7" x="0" y="0" width="10" height="10"></rect>
+        <rect id="path-9" x="0" y="0" width="10" height="10"></rect>
+        <rect id="path-11" x="0" y="0" width="1870.37982" height="22.9237025"></rect>
+        <rect id="path-13" x="0" y="0" width="10" height="10"></rect>
+        <rect id="path-15" x="0" y="0" width="10" height="10"></rect>
+        <rect id="path-17" x="0" y="0" width="10" height="10"></rect>
+        <rect id="path-19" x="0" y="0" width="10" height="10"></rect>
+    </defs>
+    <g id="正式页面" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="财务驾驶舱-行业对标-盈利情况" transform="translate(-13.000000, -11.000000)">
+            <g id="装饰条" transform="translate(13.956661, 11.500598)">
+                <g id="顶部装饰条" transform="translate(5.853428, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="路径"></g>
+                    <g id="分组-2" mask="url(#mask-2)">
+                        <path d="M0,10 L1757.86,10 L1773.3,0 L1869.08,0" id="路径" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="0,0"></path>
+                        <g id="分组-1" transform="translate(0.000000, 17.920888)" stroke="#00FFCA" stroke-opacity="0.4">
+                            <line x1="0" y1="0" x2="115.985703" y2="0" id="路径-1" stroke-dasharray="0,0"></line>
+                            <line x1="120.032009" y1="0" x2="377.408096" y2="0.001" id="路径-1" stroke-dasharray="8,4"></line>
+                        </g>
+                        <g id="分组-1" transform="translate(1360.277986, 17.922702)" stroke="#00FFCA" stroke-opacity="0.4">
+                            <line x1="310.72224" y1="0" x2="507.533498" y2="0.001" id="路径-1" stroke-dasharray="0,0"></line>
+                            <line x1="0" y1="0.501" x2="298.130335" y2="0.5" id="路径-1" stroke-dasharray="8,4"></line>
+                        </g>
+                        <g id="分组-1" transform="translate(382.000226, 12.923702)">
+                            <line x1="0" y1="4.999" x2="115.985703" y2="4.999" id="路径-1" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="0,0"></line>
+                            <line x1="120.032009" y1="4.999" x2="377.408096" y2="5" id="路径-1" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="8,4"></line>
+                            <g transform="translate(377.408096, 0.000000)">
+                                <mask id="mask-4" fill="white">
+                                    <use xlink:href="#path-3"></use>
+                                </mask>
+                                <g id="路径"></g>
+                                <path d="M0,10 L10,10 L10,0 L0,0 L0,10 Z" id="路径" fill-opacity="0.01" fill="#00FFCA" mask="url(#mask-4)"></path>
+                                <g id="路径-2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" mask="url(#mask-4)">
+                                    <g transform="translate(3.958333, 2.500000)"></g>
+                                </g>
+                            </g>
+                            <g transform="translate(384.408096, 0.000000)">
+                                <mask id="mask-6" fill="white">
+                                    <use xlink:href="#path-5"></use>
+                                </mask>
+                                <g id="路径"></g>
+                                <path d="M0,10 L10,10 L10,0 L0,0 L0,10 Z" id="路径" fill-opacity="0.01" fill="#00FFCA" mask="url(#mask-6)"></path>
+                                <path d="M3.95833333,2.5 L6.45833333,5 L3.95833333,7.5" id="路径" stroke-opacity="0.4" stroke="#00FFCA" stroke-width="1.33333333" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" mask="url(#mask-6)"></path>
+                            </g>
+                            <g transform="translate(391.408096, 0.000000)">
+                                <mask id="mask-8" fill="white">
+                                    <use xlink:href="#path-7"></use>
+                                </mask>
+                                <g id="路径"></g>
+                                <path d="M0,10 L10,10 L10,0 L0,0 L0,10 Z" id="路径" fill-opacity="0.01" fill="#00FFCA" mask="url(#mask-8)"></path>
+                                <path d="M3.95833333,2.5 L6.45833333,5 L3.95833333,7.5" id="路径" stroke-opacity="0.4" stroke="#00FFCA" stroke-width="1.33333333" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" mask="url(#mask-8)"></path>
+                            </g>
+                            <g transform="translate(398.408096, 0.000000)">
+                                <mask id="mask-10" fill="white">
+                                    <use xlink:href="#path-9"></use>
+                                </mask>
+                                <g id="路径"></g>
+                                <path d="M0,10 L10,10 L10,0 L0,0 L0,10 Z" id="路径" fill-opacity="0.01" fill="#00FFCA" mask="url(#mask-10)"></path>
+                                <path d="M3.95833333,2.5 L6.45833333,5 L3.95833333,7.5" id="路径" stroke-opacity="0.4" stroke="#00FFCA" stroke-width="1.33333333" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" mask="url(#mask-10)"></path>
+                            </g>
+                        </g>
+                        <g id="分组-1" transform="translate(790.249307, 16.423702)">
+                            <line x1="0" y1="1.499" x2="122.718735" y2="1.5" id="路径-1" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="0,0"></line>
+                            <line x1="126.765041" y1="1.499" x2="384.141127" y2="1.5" id="路径-1" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="8,4"></line>
+                            <path d="M388.104802,3 L459.744802,3 L459.744802,0 L388.104802,0 L388.104802,3 Z" id="路径" fill="#00FFCA" opacity="0.4"></path>
+                            <path d="M494.998852,3 L566.638852,3 L566.638852,0 L494.998852,0 L494.998852,3 Z" id="路径" fill="#00FFCA" opacity="0.4"></path>
+                        </g>
+                        <path d="M0,7.62652143 L61.5774431,7.62652143 L61.5774431,10.4981614 L0,10.4981614 L0,7.62652143 Z" id="矩形-2" fill="#00FFCA"></path>
+                        <path d="M1760.76601,11.2975686 L1822.38601,11.2975686 L1834.40601,2.71756858 L1773.82601,2.71756858 L1760.76601,11.2975686 Z" id="路径" fill="#00FFCA" opacity="0.7"></path>
+                        <path d="M1824.40863,11.2975686 L1842.02863,11.2975686 L1851.04863,2.71756858 L1836.43863,2.71756858 L1824.40863,11.2975686 Z" id="路径" fill="#00FFCA" opacity="0.4"></path>
+                        <path d="M1843.58722,11.2975686 L1861.20722,11.2975686 L1870.22722,2.71756858 L1852.62722,2.71756858 L1843.58722,11.2975686 Z" id="路径" fill="#00FFCA" opacity="0.4"></path>
+                    </g>
+                    <path d="M1255.14436,16.4424903 C1254.31436,16.4424903 1253.64436,17.1124903 1253.64436,17.9424903 C1253.64436,18.7724903 1254.31436,19.4424903 1255.14436,19.4424903 C1255.97436,19.4424903 1256.64436,18.7724903 1256.64436,17.9424903 C1256.64436,17.1124903 1255.97436,16.4424903 1255.14436,16.4424903 Z" id="路径" fill-opacity="0.6" fill="#00FFCA" mask="url(#mask-2)"></path>
+                    <path d="M1260.96369,16.4424903 C1260.13369,16.4424903 1259.46369,17.1124903 1259.46369,17.9424903 C1259.46369,18.7724903 1260.13369,19.4424903 1260.96369,19.4424903 C1261.79369,19.4424903 1262.46369,18.7724903 1262.46369,17.9424903 C1262.46369,17.1124903 1261.79369,16.4424903 1260.96369,16.4424903 Z" id="路径" fill-opacity="0.6" fill="#00FFCA" mask="url(#mask-2)"></path>
+                    <path d="M1266.78302,16.4424903 C1265.95302,16.4424903 1265.28302,17.1124903 1265.28302,17.9424903 C1265.28302,18.7724903 1265.95302,19.4424903 1266.78302,19.4424903 C1267.61302,19.4424903 1268.28302,18.7724903 1268.28302,17.9424903 C1268.28302,17.1124903 1267.61302,16.4424903 1266.78302,16.4424903 Z" id="路径" fill-opacity="0.6" fill="#00FFCA" mask="url(#mask-2)"></path>
+                    <path d="M1272.60236,16.4424903 C1271.77236,16.4424903 1271.10236,17.1124903 1271.10236,17.9424903 C1271.10236,18.7724903 1271.77236,19.4424903 1272.60236,19.4424903 C1273.43236,19.4424903 1274.10236,18.7724903 1274.10236,17.9424903 C1274.10236,17.1124903 1273.43236,16.4424903 1272.60236,16.4424903 Z" id="路径" fill-opacity="0.6" fill="#00FFCA" mask="url(#mask-2)"></path>
+                    <path d="M1278.42169,16.4424903 C1277.59169,16.4424903 1276.92169,17.1124903 1276.92169,17.9424903 C1276.92169,18.7724903 1277.59169,19.4424903 1278.42169,19.4424903 C1279.25169,19.4424903 1279.92169,18.7724903 1279.92169,17.9424903 C1279.92169,17.1124903 1279.25169,16.4424903 1278.42169,16.4424903 Z" id="路径" fill-opacity="0.6" fill="#00FFCA" mask="url(#mask-2)"></path>
+                </g>
+                <g id="底部装饰条" transform="translate(5.853339, 1029.209402)">
+                    <mask id="mask-12" fill="white">
+                        <use xlink:href="#path-11"></use>
+                    </mask>
+                    <g id="路径"></g>
+                    <g id="分组-2" mask="url(#mask-12)">
+                        <g transform="translate(0.154937, 0.000000)">
+                            <path d="M1870.22443,12.9237025 L112.364433,12.9237025 L96.9244334,22.9237025 L1.14443343,22.9237025" id="路径" stroke-opacity="0.4" stroke="#00FFCA" stroke-width="1" fill="none" stroke-dasharray="0,0"></path>
+                            <g id="分组-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(1492.816790, 5.001815)" stroke-dasharray="8,4" stroke-opacity="0.4">
+                                <line x1="257.376086" y1="0.1" x2="0" y2="0" id="路径-1" stroke="#00FFCA"></line>
+                            </g>
+                            <g id="分组-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(2.413401, 4.500000)" stroke-opacity="0.4">
+                                <line x1="196.811258" y1="0.6" x2="0" y2="0.5" id="路径-1" stroke="#00FFCA" stroke-dasharray="0,0"></line>
+                                <line x1="507.533498" y1="0" x2="209.403163" y2="0.1" id="路径-1" stroke="#00FFCA" stroke-dasharray="8,4"></line>
+                            </g>
+                            <g id="分组-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(958.056564, 0.000000)">
+                                <line x1="530.168096" y1="5.001" x2="414.309763" y2="5.001" id="路径-1" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="0,0"></line>
+                                <line x1="119.858333" y1="4.5" x2="0" y2="4.5" id="路径-1" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="0,0"></line>
+                                <line x1="911.748333" y1="4.5" x2="795.89" y2="4.5" id="路径-1" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="0,0"></line>
+                                <line x1="410.136086" y1="5.1" x2="152.76" y2="5" id="路径-1" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="8,4"></line>
+                                <g transform="translate(142.760000, 0.000000)">
+                                    <mask id="mask-14" fill="white">
+                                        <use xlink:href="#path-13"></use>
+                                    </mask>
+                                    <g id="路径"></g>
+                                    <path d="M10,0 L0,0 L0,10 L10,10 L10,0 Z" id="路径" fill-opacity="0.01" fill="#00FFCA" mask="url(#mask-14)"></path>
+                                    <path d="M6.04166667,7.5 L3.54166667,5 L6.04166667,2.5" id="路径" stroke-opacity="0.4" stroke="#00FFCA" stroke-width="1.33333333" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" mask="url(#mask-14)"></path>
+                                </g>
+                                <g transform="translate(135.760000, 0.000000)">
+                                    <mask id="mask-16" fill="white">
+                                        <use xlink:href="#path-15"></use>
+                                    </mask>
+                                    <g id="路径"></g>
+                                    <path d="M10,0 L0,0 L0,10 L10,10 L10,0 Z" id="路径" fill-opacity="0.01" fill="#00FFCA" mask="url(#mask-16)"></path>
+                                    <path d="M6.04166667,7.5 L3.54166667,5 L6.04166667,2.5" id="路径" stroke-opacity="0.4" stroke="#00FFCA" stroke-width="1.33333333" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" mask="url(#mask-16)"></path>
+                                </g>
+                                <g transform="translate(128.760000, 0.000000)">
+                                    <mask id="mask-18" fill="white">
+                                        <use xlink:href="#path-17"></use>
+                                    </mask>
+                                    <g id="路径"></g>
+                                    <path d="M10,0 L0,0 L0,10 L10,10 L10,0 Z" id="路径" fill-opacity="0.01" fill="#00FFCA" mask="url(#mask-18)"></path>
+                                    <path d="M6.04166667,7.5 L3.54166667,5 L6.04166667,2.5" id="路径" stroke-opacity="0.4" stroke="#00FFCA" stroke-width="1.33333333" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" mask="url(#mask-18)"></path>
+                                </g>
+                                <g transform="translate(121.760000, 0.000000)">
+                                    <mask id="mask-20" fill="white">
+                                        <use xlink:href="#path-19"></use>
+                                    </mask>
+                                    <g id="路径"></g>
+                                    <path d="M10,0 L0,0 L0,10 L10,10 L10,0 Z" id="路径" fill-opacity="0.01" fill="#00FFCA" mask="url(#mask-20)"></path>
+                                    <path d="M6.04166667,7.5 L3.54166667,5 L6.04166667,2.5" id="路径" stroke-opacity="0.4" stroke="#00FFCA" stroke-width="1.33333333" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" mask="url(#mask-20)"></path>
+                                </g>
+                            </g>
+                            <g id="分组-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(513.339057, 3.500000)">
+                                <line x1="439.871481" y1="1.501" x2="182.495395" y2="1.5" id="路径-1" stroke-opacity="0.4" stroke="#00FFCA" stroke-dasharray="8,4"></line>
+                                <path d="M178.53405,0 L106.89405,0 L106.89405,3 L178.53405,3 L178.53405,0 Z" id="路径" fill="#00FFCA" opacity="0.5"></path>
+                                <path d="M71.64,0 L0,0 L0,3 L71.64,3 L71.64,0 Z" id="路径" fill="#00FFCA" opacity="0.5"></path>
+                            </g>
+                            <path d="M1870.22489,15.297181 L1808.64744,15.297181 L1808.64744,12.425541 L1870.22489,12.425541 L1870.22489,15.297181 Z" id="矩形-2" stroke="none" fill="#00FFCA" fill-rule="evenodd"></path>
+                            <path d="M109.461209,11.6249197 L47.8412094,11.6249197 L35.8212094,20.2049197 L96.4112094,20.2049197 L109.461209,11.6249197 Z" id="路径" stroke="none" fill="#00FFCA" fill-rule="evenodd" opacity="0.7"></path>
+                            <path d="M45.8185854,11.6249197 L28.1985854,11.6249197 L19.1785854,20.2049197 L33.7885854,20.2049197 L45.8185854,11.6249197 Z" id="路径" stroke="none" fill="#00FFCA" fill-rule="evenodd" opacity="0.4"></path>
+                            <path d="M26.64,11.6249197 L9.02,11.6249197 L0,20.2049197 L17.59,20.2049197 L26.64,11.6249197 Z" id="路径" stroke="none" fill="#00FFCA" fill-rule="evenodd" opacity="0.4"></path>
+                        </g>
+                    </g>
+                </g>
+                <g id="左装饰条" transform="translate(0.000000, 21.335196)">
+                    <line x1="0.28929679" y1="84.6460678" x2="0.28929679" y2="926.205778" id="路径-3" stroke="#00FFCA" stroke-dasharray="0,0"></line>
+                    <g id="分组-3" transform="translate(0.000000, 440.969742)" fill="#00FFCA">
+                        <path d="M0,0 L2,0 L2,30.0254938 L0,30.0254938 L0,0 Z" id="矩形-3"></path>
+                        <path d="M0,69.4880413 L2,69.4880413 L2,99.5135351 L0,99.5135351 L0,69.4880413 Z" id="矩形-3"></path>
+                        <path d="M0,34.7440206 L2,34.7440206 L2,64.7695145 L0,64.7695145 L0,34.7440206 Z" id="矩形-3"></path>
+                        <path d="M0,104.232062 L2,104.232062 L2,134.257556 L0,134.257556 L0,104.232062 Z" id="矩形-3"></path>
+                    </g>
+                    <line x1="0.78929679" y1="0" x2="0.88929679" y2="78.3525997" id="路径-3" stroke="#00FFCA" stroke-dasharray="8,4"></line>
+                    <line x1="0.793339145" y1="935.004206" x2="0.893339145" y2="1013.35681" id="路径-3" stroke="#00FFCA" stroke-dasharray="8,4"></line>
+                </g>
+                <g id="右装饰条" transform="translate(1880.083339, 18.929402)">
+                    <line x1="0.28929679" y1="84.6460678" x2="0.28929679" y2="926.205778" id="路径-3" stroke="#00FFCA" stroke-dasharray="0,0"></line>
+                    <g id="分组-3" transform="translate(0.000000, 440.969742)" fill="#00FFCA">
+                        <path d="M0,0 L2,0 L2,30.0254938 L0,30.0254938 L0,0 Z" id="矩形-3"></path>
+                        <path d="M0,69.4880413 L2,69.4880413 L2,99.5135351 L0,99.5135351 L0,69.4880413 Z" id="矩形-3"></path>
+                        <path d="M0,34.7440206 L2,34.7440206 L2,64.7695145 L0,64.7695145 L0,34.7440206 Z" id="矩形-3"></path>
+                        <path d="M0,104.232062 L2,104.232062 L2,134.257556 L0,134.257556 L0,104.232062 Z" id="矩形-3"></path>
+                    </g>
+                    <line x1="0.78929679" y1="0" x2="0.79029679" y2="78.3525997" id="路径-3" stroke="#00FFCA" stroke-dasharray="8,4"></line>
+                    <line x1="0.793339145" y1="935.004206" x2="0.794339145" y2="1013.35681" id="路径-3" stroke="#00FFCA" stroke-dasharray="8,4"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

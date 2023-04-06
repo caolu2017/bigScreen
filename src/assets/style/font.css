@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "DS-DIGIB";
+    src: url('../font/DS-DIGIB.TTF');   
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "D-DIN-Bold";
+    src: url('../font/D-DIN-Bold.otf');   
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "D-DINCondensed";
+    src: url('../font/D-DINCondensed.otf');   
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "D-DIN";
+    src: url('../font/D-DIN.otf');   
+    font-weight: normal;
+    font-style: normal;
+}
