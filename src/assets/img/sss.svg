@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 109" class="design-iconfont">
+  <defs>
+    <linearGradient x1="3.49746846%" y1="50%" x2="84.1498589%" y2="50%" id="g5n74b1z8__qd67t1v2sa">
+      <stop stop-color="#042637" offset="0%"/>
+      <stop stop-color="#072B43" offset="100%"/>
+    </linearGradient>
+    <linearGradient x1="-.52369399%" y1="49.8718137%" x2="92.1740545%" y2="50.1859834%" id="g5n74b1z8__s3erf1opvb">
+      <stop stop-color="#05283B" offset="0%"/>
+      <stop stop-color="#41929D" offset="13.2568865%"/>
+      <stop stop-color="#062A41" offset="100%"/>
+    </linearGradient>
+    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="g5n74b1z8__unl8tiyp6d">
+      <stop stop-color="#0A152D" offset="0%"/>
+      <stop stop-color="#005871" offset="100%"/>
+    </linearGradient>
+    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="g5n74b1z8__wcpzfhcabg">
+      <stop stop-color="#07263E" offset="0%"/>
+      <stop stop-color="#6FF" offset="100%"/>
+    </linearGradient>
+    <filter x="-17.8%" y="-90%" width="135.5%" height="280%" filterUnits="objectBoundingBox" id="g5n74b1z8__yji95gyy9e">
+      <feGaussianBlur stdDeviation="9" in="SourceGraphic"/>
+    </filter>
+    <path d="M237.835938,104 L228.050781,94.1953125 L217.111396,94.1953125 L208.492188,84.734375 L104.756836,84.734375 L78.1142578,56.9306641 L54.0820313,56.9306641 L-1.70530257e-13,0 L724.619141,0 L670.537109,56.9306641 L646.504883,56.9306641 L619.862305,84.734375 L516.126953,84.734375 L507.507744,94.1953125 L496.568359,94.1953125 L486.783203,104 L237.835938,104 Z" id="g5n74b1z8__9q2m5mbosc"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path d="M0 0L753 0 753 75 282.197266 75 252.353516 57.3105469 0 57.3105469z" fill="url(#g5n74b1z8__qd67t1v2sa)"/>
+    <path stroke="url(#g5n74b1z8__s3erf1opvb)" stroke-width="2" d="M236.627411 57L252.539994 57 284.694745 75.5 602 75.5"/>
+    <path d="M0 0L753 0 753 75 282.197266 75 252.353516 57.3105469 0 57.3105469z" fill="url(#g5n74b1z8__qd67t1v2sa)" transform="matrix(-1 0 0 1 1920 0)"/>
+    <path stroke="url(#g5n74b1z8__s3erf1opvb)" stroke-width="2" d="M236.627411 57L252.539994 57 284.694745 75.5 602 75.5" transform="matrix(-1 0 0 1 1920 0)"/>
+    <g transform="translate(597.380859)">
+      <mask id="g5n74b1z8__jz76sumytf" fill="#fff">
+        <use xlink:href="#g5n74b1z8__9q2m5mbosc"/>
+      </mask>
+      <use fill="url(#g5n74b1z8__unl8tiyp6d)" xlink:href="#g5n74b1z8__9q2m5mbosc"/>
+      <path fill="#24BDD8" filter="url(#g5n74b1z8__yji95gyy9e)" mask="url(#g5n74b1z8__jz76sumytf)" d="M363 94A76 15 0 1 0 363 124A76 15 0 1 0 363 94Z"/>
+    </g>
+    <path stroke="url(#g5n74b1z8__wcpzfhcabg)" d="M27.4082031 32.2070312L52.5253906 59.6738281 76.9941406 59.6738281 103.804687 87.6328125 207.775391 87.6328125 217.024414 97.6298828 226.955078 97.6298828 236.505859 107.769531 362.619141 107.769531" transform="translate(597.380859)"/>
+    <path stroke="url(#g5n74b1z8__wcpzfhcabg)" d="M27.4082031 28L52.5253906 55.4667969 76.9941406 55.4667969 103.804687 83.4257813 207.775391 83.4257812 217.024414 93.4228516 226.955078 93.4228516 236.505859 103.5625 362.619141 103.5625" transform="translate(597.380859)"/>
+    <g transform="matrix(-1 0 0 1 1295 28)" stroke="url(#g5n74b1z8__wcpzfhcabg)">
+      <path d="M0.408203125 4.20703125L25.5253906 31.6738281 49.9941406 31.6738281 76.8046875 59.6328125 180.775391 59.6328125 190.024414 69.6298828 199.955078 69.6298828 209.505859 79.7695312 335.619141 79.7695312"/>
+      <path d="M0.408203125 0L25.5253906 27.4667969 49.9941406 27.4667969 76.8046875 55.4257813 180.775391 55.4257812 190.024414 65.4228516 199.955078 65.4228516 209.505859 75.5625 335.619141 75.5625"/>
+    </g>
+    <g opacity=".30000001" stroke="#6FF" stroke-dasharray="4" stroke-width="4">
+      <path d="M143,55.2070312 L113.339844,55.2070312 L66.5,0" transform="translate(499 10)"/>
+      <path d="M56 5L100.15918 55.2070312" transform="translate(499 10)"/>
+      <path d="M47 10L83 52" transform="translate(499 10)"/>
+      <path d="M37 15.6972656L68 50" transform="translate(499 10)"/>
+      <path d="M27 21L53 48" transform="translate(499 10)"/>
+      <path d="M16 28L37 48" transform="translate(499 10)"/>
+      <path d="M8 35L23 50" transform="translate(499 10)"/>
+      <path d="M0 40L12 52" transform="translate(499 10)"/>
+    </g>
+    <g opacity=".30000001" stroke="#6FF" stroke-dasharray="4" stroke-width="4">
+      <path d="M143,55.2070312 L113.339844,55.2070312 L66.5,0" transform="matrix(-1 0 0 1 1421 10)"/>
+      <path d="M56 5L100.15918 55.2070312" transform="matrix(-1 0 0 1 1421 10)"/>
+      <path d="M47 10L83 52" transform="matrix(-1 0 0 1 1421 10)"/>
+      <path d="M37 15.6972656L68 50" transform="matrix(-1 0 0 1 1421 10)"/>
+      <path d="M27 21L53 48" transform="matrix(-1 0 0 1 1421 10)"/>
+      <path d="M16 28L37 48" transform="matrix(-1 0 0 1 1421 10)"/>
+      <path d="M8 35L23 50" transform="matrix(-1 0 0 1 1421 10)"/>
+      <path d="M0 40L12 52" transform="matrix(-1 0 0 1 1421 10)"/>
+    </g>
+    <text font-family="DINCondensed-Bold, DIN Condensed" font-size="60" font-style="condensed" font-weight="bold" fill="#FFF">
+      <tspan x="805" y="67">SAC DASHBOARD</tspan>
+    </text>
+  </g>
+</svg>

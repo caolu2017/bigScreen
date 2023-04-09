@@ -31,20 +31,33 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
     _GetMaterialPlan()
   })
 
+  const filterDay=(str)=>{
+    const now = new Date()
+    const m = now.getMonth()+1
+    const d = now.getDate()
+    if(str=='zeroDays'){
+      return '當天'
+    }else if(str=='oneDays'){
+      return `+1天`
+    }else if(str=='twoDays'){
+      return `+2天`
+    }else if(str=='threeDays'){
+      return `+3天`
+    }else if(str=='fourDays'){
+      return `+4天`
+    }else if(str=='fiveDays'){
+      return `+5天`
+    }
+  }
+
   const _getFabu=()=> {
     getFabu().then(res=>{
       console.log('res', res)
       const arr = []
       for(let key  in res){
-        // let obj = {}
-        console.log(key + '---' + res[key])
-        
-        arr.unshift({'city': key, 'value': 1-res[key], type: '城市人口'})
-        arr.unshift({'city': key, 'value': Number(res[key]), type: '首都人口'})
-        // obj['city'] = res[key]
-        // arr.push(obj)
+        arr.unshift({'city': filterDay(key), 'value': 1-res[key], type: '城市人口'})
+        arr.unshift({'city': filterDay(key), 'value': Number(res[key]), type: '首都人口'})
         console.log(key + '---' + res[key], arr)
-
       }
       
       fabu.value = arr
@@ -60,29 +73,61 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
   const _GetFaliao =()=>{
     GetFaliao().then(res=>{
       
-      profit.value = res
-      console.log('fff', profit.value)
+      profit.value = res.map(r=>{
+        console.log('ddfdf', r)
+        const v = ((r.actualQty*100)/r.qty).toFixed()
+        let c = ''
+        if (v-80<=0) {
+          c= '#C8033E';
+        }else if(v-90>=0){
+          c= '#039EC8';
+        }else {
+          c= '#EBAF00';
+        }
+
+        return{
+        ...r, 
+        color: c
+      }})
     })
   }
   const _GetMaterialPlan =()=>{
     GetMaterialPlan().then(res=>{
       console.log('ggg', res)
       tableData.value = res
+      
+      // .map(r=>{
+      //   const v = ((r.actualQty*100)/r.qty).toFixed()
+      //   let c = ''
+      //   if (v-80<=0) {
+      //     c= '#C8033E';
+      //   }else if(v-90>=0){
+      //     c= '#039EC8';
+      //   }else {
+      //     c= '#EBAF00';
+      //   }
+
+      //   return{
+      //   ...ref, 
+      //   color: c
+      // }})
     })
   }
 
 </script>
 
 <template>
-  <div class="container">
+  <div class="wrapper">
+    <div class="container">
     <div class="inner" ref='inner'>
       <div ref="top">
         <div class="top">
           <div class="part">
-            <div class="cn">SAC DASHBOARD</div>
+            <!-- <div class="cn">SAC DASHBOARD</div> -->
             <div class="en">主料倉</div>
           </div>
         </div>
+        <!-- <img class="top-img" src="@/assets/img/sss.svg" alt=""> -->
       </div>
       
 
@@ -104,6 +149,8 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
     </div>
 
   </div>
+  </div>
+ 
 
 	
 </template>

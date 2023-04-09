@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:53:19
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-05 22:27:51
+ * @LastEditTime: 2023-04-06 17:30:24
  * @Description: 营业总成本
 -->
 <script lang="ts">
@@ -48,6 +48,7 @@ export default{
 
     chart.tooltip(false);
     chart.axis('city', {
+      position: 'top',
       label: {
         style: {
           fill: '#FFFFFF',
@@ -94,16 +95,13 @@ export default{
     .position('city*value')
     .color('type', (v) => {
       if (v === '首都人口') {
-        return '#5B8FF9';
+        return '#039EC8';
       }else {
-        return '#5AD8A6';
+        return '#002231';
       }
     })
     .label('value*type', (val, t) => {
-    const color = t === '首都人口' ? 'white' : '#47494b';
-    // if (val < 0.05) {
-    //   return null;
-    // }
+    const color = t === '首都人口' ? 'white' : 'transparent';
     return {
       position: 'middle',
       offset: 0,
@@ -118,33 +116,9 @@ export default{
       },
     };
   });
-  chart.removeInteraction('active-region')
-    // chart.interaction('active-region');
+    chart.removeInteraction('active-region')
     chart.render();
   });
-
-	
-  const fruits = [
-    { name: '去年同期', year: '2022.05', value: 260 },
-    { name: '营业总收入', year: '2022.05', value: 100 },
-    { name: '去年同期', year: '2022.06', value: 260 },
-    { name: '营业总收入', year: '2022.06', value: 100 },
-    { name: '去年同期', year: '2022.07', value: 260 },
-    { name: '营业总收入', year: '2022.07', value: 100 },
-    { name: '去年同期', year: '2022.08', value: 210 },
-    { name: '营业总收入', year: '2022.08', value: 150 },
-  ];
-
-  const data = [
-  { city: 'threeDays', type: '城市人口', value: 0.5 },
-  { city: 'threeDays', type: '首都人口', value: 0.83 },
-  { city: 'twoDays', type: '首都人口', value: 0.01 },
-  { city: 'twoDays', type: '城市人口', value: 0.8 },
-  { city: 'oneDays', type: '首都人口', value: 0.02 },
-  { city: 'oneDays', type: '城市人口', value: 0.3 },
-  { city: 'zeroDays', type: '首都人口', value: 0.08 },
-  { city: 'zeroDays', type: '城市人口', value: 0.66 },
-];
 
   onMounted(()=>{
    

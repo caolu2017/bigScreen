@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-06 10:08:30
+ * @LastEditTime: 2023-04-06 22:46:28
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -68,13 +68,14 @@ export default{
         <span>預計到場日期</span>
       </div> -->
       <el-table :data="tableData" style="width: 100%" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
+        <el-table-column type="index" label="序号" width="60" />
         <el-table-column prop="cntrNo" label="柜号" width="69" />
         <el-table-column prop="po" label="PO" width="114" />
         <el-table-column prop="matNo" label="料號" />
         <el-table-column prop="fabrics" label="布種" />
         <el-table-column prop="colorName" label="顏色" />
         <el-table-column prop="qty" label="總碼數" />
-        <el-table-column prop="planArriveDate" label="預計到場日期" />
+        <el-table-column prop="planArriveDate" label="預計到廠日期" />
       </el-table>
     </div>
   </div>
@@ -86,6 +87,10 @@ export default{
 <style scoped lang="scss">
   :deep(.chart-header){
     margin-bottom: 0;
+  }
+
+  :deep(thead th ){
+    border-bottom: 0!important;
   }
 
   :deep(.el-table tr){
@@ -102,7 +107,12 @@ export default{
   :deep(.el-table thead th:not(:last-child) .cell){
     border-right:1px solid #fff;
   }
-
+  :deep(.el-table tbody tr){
+    height: 47px;
+    line-height: 47px;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
 
   :deep(.el-table .el-table__cell){

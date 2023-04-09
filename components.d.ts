@@ -5,7 +5,6 @@
 declare module 'vue' {
   export interface GlobalComponents {
     BaseLine: typeof import('./src/components/BaseLine.vue')['default']
-    ElProgress: typeof import('element-plus/es')['ElProgress']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     SelectView: typeof import('./src/components/SelectView.vue')['default']

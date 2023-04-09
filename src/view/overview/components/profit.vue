@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:53:19
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-06 11:00:25
+ * @LastEditTime: 2023-04-06 21:06:59
  * @Description: 利润总额
 -->
 <script lang="ts">
@@ -40,11 +40,18 @@
       height: props.height,
     });
     chart.data(props.tableData)
-    chart.scale('sales', {
-      nice: true,
+    chart.scale('actualQty', {
+        min: 0,
+        max: props.tableData[0].qty,
+    });
+    chart.scale('qty', {
+        min: 0,
+        max: props.tableData[0].qty,
     });
     chart.appendPadding = 20
     chart.tooltip(false);
+
+    console.log('fffaaa', props.tableData[0].qty)
 
     // chart.legend('name', false)
 
@@ -64,6 +71,21 @@
         }
       }
     })
+    chart.legend(false)
+    chart.axis('qty', {
+      label: {
+        formatter: text => {
+          return '';
+        }
+      },
+      grid: {
+        line: {
+          style: {
+            opacity: 0,
+          }
+        }
+      }
+    })
 
     chart.axis('lineName', {
       label: {
@@ -74,22 +96,22 @@
         }
       },
     })
-
+    
     chart.interval()
-    .position('styleNo*actualQty')
-    .color('#5AD8A6')
-    .adjust([
-      {
-        type: 'dodge',
-        marginRatio: 0.05,
-      },
-    ])
-    .label('actualQty*styleNo', (val, t) => {
+    .position('lineName*actualQty')
+
+    .color('color', v => {
+      return v;
+    })
+    .adjust('stack')
+    .label('styleNo', (val, a) => {
     const color = 'white';
     return {
-      position: 'top',
-      offset: 0,
+      position: 'middle',
+      // offset: 0,
       content: val,
+      autoRotate: false,
+      rotate: 45,
       style: {
         fontSize: 12,
         fill: color,
@@ -99,21 +121,31 @@
         shadowColor: 'rgba(0, 0, 0, .45)',
       },
     };
+
+    
   });
 
-//   chart.tooltip({
-//                 showCrosshairs: true, // 展示 Tooltip 辅助线
-//                 shared: true,
-//                 showMarkers: true,
-//                 itemTpl: `
-//                     <div style="margin-bottom: 10px;list-style:none;">
-//                     <span style="background-color:{color};" class="g2-tooltip-marker"></span>
-//                     進度: {value}
-//                     </div>
-//                 ` // 自定义 toolTip 样式
-// });
-    // chart.interaction('active-region');
     chart.removeInteraction('active-region')
+
+
+    props.tableData.forEach((item) => {
+      const t= ((item.actualQty*100)/item.qty).toFixed()+'%'
+      chart
+        .annotation()
+        .text({
+          position: [item.lineName, item.actualQty],
+          content: t,
+          style: {
+            textAlign: 'center',
+            fontSize: 12,
+            stroke: '#fff',
+            fill: '#fff'
+          },
+          offsetY: -10,
+        })
+    });
+
+
     chart.render();
   }),
 
@@ -125,8 +157,9 @@
 </script>
 
 <template>
-  <div>
+  <div style="position: relative;">
     <chartTitle :title="'已派工，尚未完成清單與進度'" />
+    <div class="line">100%</div>
     <div id="profit"></div>
   </div>
 </template>
@@ -134,5 +167,16 @@
 
 
 <style scoped>
+
+.line{
+  height: 1px;
+  border-bottom: 1px dotted red;
+  color: red;
+  position: absolute;
+  top: 75px;
+  left: 30px;
+  right: 20px;
+  line-height: 5px;
+}
   
 </style>
