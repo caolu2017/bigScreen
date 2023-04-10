@@ -1,10 +1,3 @@
-<!--
- * @Author: caolu 64294@yangzijiang.com
- * @Date: 2023-01-06 13:53:19
- * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-06 17:30:24
- * @Description: 营业总成本
--->
 <script lang="ts">
 export default{
     name: 'Revenue'
@@ -38,84 +31,57 @@ export default{
     height: props.height,
   });
 
-  console.log('ssss', props.fabu)
+  console.log('ssssfabu', props.fabu)
     chart.data(props.fabu)
-    chart.scale('sales', {
-      nice: true,
-    });
+    // chart.scale('sales', {
+    //   nice: true,
+    // });
 
-    chart.appendPadding = 20
+    // chart.appendPadding = 20
 
     chart.tooltip(false);
-    chart.axis('city', {
-      position: 'top',
-      label: {
-        style: {
-          fill: '#FFFFFF',
-          opacity: 0.8,
-          fontFamily: 'D-DIN',
-        }
-      },
-      grid: {
-        line: {
-          style: {
-            stroke: '#fff',
-            opacity: 0,
-            lineWidth: 0.5
-          }
-        }
-      },
-      tickLine: null,
-      line: null,
+    // chart.legend('type', false);
+    // chart.coordinate('rect').transpose();
+    // chart.interaction('active-region');
+
+    chart.coordinate('theta', {
+      radius: 0.75
     });
-
-    chart.axis('value', {
-      label: {
-        formatter: text => {
-          return '';
-        }
-      },
-      grid: {
-        line: {
-          style: {
-            stroke: '#fff',
-            opacity: 0,
-            lineWidth: 0.5
-          }
-        }
-      }
-    })
-
-    chart.legend('type', false);
-    chart.coordinate('rect').transpose();
-    chart.interaction('active-region');
 
     chart.interval()
     .adjust('stack')
-    .position('city*value')
-    .color('type', (v) => {
-      if (v === '首都人口') {
-        return '#039EC8';
-      }else {
-        return '#002231';
-      }
-    })
-    .label('value*type', (val, t) => {
-    const color = t === '首都人口' ? 'white' : 'transparent';
-    return {
-      position: 'middle',
-      offset: 0,
-      content: val*100 + '%',
-      style: {
-        fontSize: 12,
-        fill: color,
-        lineWidth: 0,
-        stroke: null,
-        shadowBlur: 2,
-        shadowColor: 'rgba(0, 0, 0, .45)',
+    .position('value')
+    .color('city', ['#039EC8', '#EBAF00', '#FF7500', '#C8033E'])
+    .label('value', (val, t) => {
+      return {
+        offset: -30,
+        content: val*100 + '%',
+        style: {
+          fontSize: 14,
+          fill: '#fff',
+          shadowBlur: 2,
+          shadowColor: 'rgba(0, 0, 0, .45)',
+        },
+      };
+    });
+
+
+    chart.legend('city',{
+      position: 'right',
+      offsetX: -80,
+      // offsetY: 16,
+      itemName: {
+        style: (item, index: number, items)=>{
+          return {
+            fill: '#fff',
+            fontWeight: 400,
+            cursor:'pointer',
+            fontSize:  14,
+          }
+
+        }
       },
-    };
-  });
+    }) 
     chart.removeInteraction('active-region')
     chart.render();
   });

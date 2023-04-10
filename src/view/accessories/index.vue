@@ -12,7 +12,7 @@
   import axios from 'axios'
   import { dataFormatter } from './utils'
   import { pxtorem } from './utils'
-import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/index'
+import { GetPgFinish, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMaterialPlan } from '../../../api/index'
 
   const card = ref(null)
   const height = ref(0)
@@ -25,10 +25,10 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
   onMounted(()=>{
     height.value = card.value.$el.clientHeight -40
 
-    _getFabu()
-    _GetLingliao()
-    _GetFaliao()
-    _GetMaterialPlan()
+    _GetPgFinish()
+    _GetFlPgLessthan3dByLine()
+    _GetFlFaliaoProgress()
+    _GetFlMaterialPlan()
   })
 
   const filterDay=(str)=>{
@@ -50,9 +50,13 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
     }
   }
 
-  const _getFabu=()=> {
-    getFabu().then(res=>{
+  const _GetPgFinish=()=> {
+    GetPgFinish().then(res=>{
       console.log('res', res)
+      // res.oneDays = '0.2'
+      // res.twoDays = '0.3'
+      // res.threeDays = '0.4'
+      // res.zeroDays = '0.1'
       const arr = []
       for(let key  in res){
         arr.push({'city': filterDay(key), 'value': Number(res[key])})
@@ -64,14 +68,14 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
     })
   }
 
-  const _GetLingliao =()=>{
-    GetLingliao().then(res=>{
+  const _GetFlPgLessthan3dByLine =()=>{
+    GetFlPgLessthan3dByLine().then(res=>{
       console.log('ccc', res)
       Lingliao.value = res
     })
   }
-  const _GetFaliao =()=>{
-    GetFaliao().then(res=>{
+  const _GetFlFaliaoProgress =()=>{
+    GetFlFaliaoProgress().then(res=>{
       
       profit.value = res.map(r=>{
         console.log('ddfdf', r)
@@ -91,26 +95,10 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
       }})
     })
   }
-  const _GetMaterialPlan =()=>{
-    GetMaterialPlan().then(res=>{
+  const _GetFlMaterialPlan =()=>{
+    GetFlMaterialPlan().then(res=>{
       console.log('ggg', res)
       tableData.value = res
-      
-      // .map(r=>{
-      //   const v = ((r.actualQty*100)/r.qty).toFixed()
-      //   let c = ''
-      //   if (v-80<=0) {
-      //     c= '#C8033E';
-      //   }else if(v-90>=0){
-      //     c= '#039EC8';
-      //   }else {
-      //     c= '#EBAF00';
-      //   }
-
-      //   return{
-      //   ...ref, 
-      //   color: c
-      // }})
     })
   }
 

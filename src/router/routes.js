@@ -5,12 +5,12 @@ const routes = [
     title: '',
     component: () => import('@/view/overview/index.vue')
   },
-  // {
-  //   path: '/industryBenchmarking',
-  //   name: 'industryBenchmarking',
-  //   title: '行业对标',
-  //   component: () => import('@/view/industryBenchmarking.vue')
-  // },
+  {
+    path: '/accessories',
+    name: 'accessories',
+    title: '',
+    component: () => import('@/view/accessories/index.vue')
+  },
   // {
   //   path: '/industryOverview',
   //   name: 'industryOverview',
