@@ -5,7 +5,7 @@ export default{
 </script>
 <script setup lang="ts">
 	import { computed, onMounted, watch, ref, toRefs } from 'vue'
-  import { Pie } from '@antv/g2plot';
+	import { Chart } from '@antv/g2'
   import chartTitle from './chartTitle.vue'
 
   interface costProps {
@@ -19,68 +19,78 @@ export default{
 
   const propsHeight = ref(0)
 
+  let chart = null
+
   watch(() => [props.height, props.fabu], (newValue, oldValue) => {
     propsHeight.value = newValue[0]
 
     console.log('ssss', props.height, newValue[0])
     if(!newValue||props.fabu.length==0) return 
 
-    const chart = new Pie('revenue', {
-      data: props.fabu,
-      angleField: 'value',
-      radius: 0.8,
-      label: {
-        type: 'inner',
-        offset: '-50%',
-        formatter: ({value}) => (value*100).toFixed()+'%',
-        style: {
-          textAlign: 'center',
-          fontSize: 20,
-          fontWeight: 500,
-          color: '#fff'
-        },
-      },
-      colorField: 'city', // 部分图表使用 seriesField
-      color: ({ city }) => {
-        if(city == ' 当天'){
-          return '#039EC8';
-        }else if(city == '+1天'){
-          return '#EBAF00';
-        }else if(city == '+2天'){
-          return '#FF7500';
-        }else if(city == '+3天'){
-          return '#C8033E';
-        }
-      },
-      legend: {
-        position: 'right',
-        offsetX: -80,
-        itemName: {
-          style: {
-            fontSize:  20,
-            fill: '#fff',
-            fontWeight: 700,
-          },
-          
-        }
-      },
-      tooltip: false,
-      pieStyle: {
-        lineWidth: 0,
-      },
-      statistic: {
-        title: false,
-        content: {
-          style: {
-            whiteSpace: 'pre-wrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          },
-          content: 'AntV\nG2Plot',
-        },
-      },
+    if(chart){
+      chart.changeData(props.fabu)
+      return
+    }
+    
+     chart = new Chart({
+    container: 'revenue',
+    autoFit: true,
+    height: props.height,
+  });
+
+  console.log('ssssfabu', props.fabu)
+    chart.data(props.fabu)
+    // chart.scale('sales', {
+    //   nice: true,
+    // });
+
+    // chart.appendPadding = 20
+
+    chart.tooltip(false);
+    // chart.legend('type', false);
+    // chart.coordinate('rect').transpose();
+    // chart.interaction('active-region');
+
+    chart.coordinate('theta', {
+      radius: 0.75
     });
 
+    chart.interval()
+    .adjust('stack')
+    .position('value')
+    .color('city', ['#039EC8', '#EBAF00', '#FF7500', '#C8033E'])
+    .label('value', (val, t) => {
+      return {
+        offset: -30,
+        content: (val*100).toFixed() + '%',
+        style: {
+          fontSize: 20,
+          fontWeight: 500,
+          fill: '#fff',
+          shadowBlur: 2,
+          shadowColor: 'rgba(0, 0, 0, .45)',
+        },
+      };
+    });
+
+
+    chart.legend('city',{
+      position: 'right',
+      offsetX: -80,
+      // offsetY: 16,
+      itemName: {
+        style: (item, index: number, items)=>{
+          return {
+            fill: '#fff',
+            fontWeight: 700,
+            cursor:'pointer',
+            fontSize:  20,
+          }
+
+        }
+      },
+    }) 
+    chart.removeInteraction('active-region')
     chart.render();
   });
 
@@ -93,8 +103,8 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'已派工，配套完成情況'" />
-    <div id="revenue" :style="{'height':height-20+'px'}"></div>
+    <chartTitle :title="'派工单完成情况（周）'" />
+    <div id="revenue"></div>
   </div>
 </template>
 

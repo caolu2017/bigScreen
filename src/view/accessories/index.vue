@@ -4,7 +4,7 @@
   }
 </script>
 <script setup lang="ts">
-	import { computed, initCustomFormatter, onMounted, watch, ref,  } from 'vue'
+	import { computed, initCustomFormatter, onMounted, watch, ref, onUnmounted } from 'vue'
   import Profit from './components/profit.vue'
 	import Revenue from './components/revenue.vue'
 	import Cost from './components/cost.vue'
@@ -20,17 +20,28 @@ import { GetPgFinish, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMateria
   const tableData = ref([])
   const Lingliao = ref([])
   const profit = ref([])
-
+let intervalID = null
 
   onMounted(()=>{
     height.value = card.value.$el.clientHeight -40
-
-    _GetPgFinish()
+     _GetPgFinish()
     _GetFlPgLessthan3dByLine()
     _GetFlFaliaoProgress()
     _GetFlMaterialPlan()
+
+    intervalID = setInterval(function(){
+        _GetPgFinish()
+    _GetFlPgLessthan3dByLine()
+    _GetFlFaliaoProgress()
+    _GetFlMaterialPlan()
+      }, 120000)
+
+   
   })
 
+ onUnmounted(()=>{
+intervalID = null
+  })
   const filterDay=(str)=>{
     const now = new Date()
     const m = now.getMonth()+1

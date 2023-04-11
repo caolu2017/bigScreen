@@ -23,36 +23,36 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'最近到廠輔料信息'" />
+    <chartTitle :title="'最近到厂辅料信息'" />
     <div id="container">
       <el-table :data="tableData" style="width: 100%" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
-        <el-table-column prop="cntrNo" label="貨櫃號" width="120">
+        <el-table-column prop="cntrNo" label="货柜号" width="120">
           <template #default="scope">
             <div>{{ scope.row['cntrNo']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="matNo" label="料號">
+        <el-table-column prop="matNo" label="料号">
           <template #default="scope">
             <div>{{ scope.row['matNo']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="specification" label="規格">
+        <el-table-column prop="specification" label="规格">
           <template #default="scope">
             <div>{{ scope.row['specification']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="name" label="名稱">
+        <el-table-column prop="name" label="名称">
           <template #default="scope">
             <div >{{ scope.row['name']||'-' }}</div>
           </template>
         </el-table-column>
 
-        <el-table-column prop="qty" label="數量">
+        <el-table-column prop="qty" label="数量">
           <template #default="scope">
             <div>{{ scope.row['qty']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="planArriveDate" label="預計到廠日期">
+        <el-table-column prop="planArriveDate" label="预计到厂日期">
           <template #default="scope">
             <div>{{ scope.row['planArriveDate']||'-' }}</div>
           </template>
@@ -97,9 +97,7 @@ export default{
   :deep(thead .el-table_1_column_4){
     border:0;
   }
-  :deep(tbody .el-table_1_column_4 .cell){
-    padding: 0!important;
-  }
+
   :deep(.el-table tbody .cell){
     // height: 100%;
     line-height: inherit;

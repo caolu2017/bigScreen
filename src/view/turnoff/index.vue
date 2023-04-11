@@ -12,7 +12,7 @@
   import axios from 'axios'
   import { dataFormatter } from './utils'
   import { pxtorem } from './utils'
-import { GetCpcShipRateOfMonth, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMaterialPlan } from '../../../api/index'
+import { GetCpcShipRateOfMonth, GetShipRateOfWeek, GetCpcWarehouseRateOfMonth, GetShipDiffDetailOfWeek } from '../../../api/index'
 
   const card = ref(null)
   const height = ref(0)
@@ -26,49 +26,61 @@ import { GetCpcShipRateOfMonth, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, Ge
     height.value = card.value.$el.clientHeight -40
 
     _GetCpcShipRateOfMonth()
-    // _GetFlPgLessthan3dByLine()
-    // _GetFlFaliaoProgress()
-    // _GetFlMaterialPlan()
+    _GetShipRateOfWeek()
+    _GetCpcWarehouseRateOfMonth()
+    _GetShipDiffDetailOfWeek()
   })
 
   const _GetCpcShipRateOfMonth=()=> {
     GetCpcShipRateOfMonth().then(res=>{
       console.log('resss', res)
-      fabu.value = res
+      const arr = []
+      
+      res.forEach((i, wk)=>{
+        arr.push(
+          {
+          ...i, 
+          rate: 100, 
+          type: 'a', 
+          },
+          {...i,type:'b' ,rate:Number(i.rate)},
+          
+        )
+      })
+
+      fabu.value = arr
+
     })
   }
 
-  const _GetFlPgLessthan3dByLine =()=>{
-    GetFlPgLessthan3dByLine().then(res=>{
+  const _GetShipRateOfWeek =()=>{
+    GetShipRateOfWeek().then(res=>{
       console.log('ccc', res)
       Lingliao.value = res
     })
   }
-  const _GetFlFaliaoProgress =()=>{
-    GetFlFaliaoProgress().then(res=>{
+  const _GetCpcWarehouseRateOfMonth =()=>{
+    GetCpcWarehouseRateOfMonth().then(res=>{
+      const arr = []
       
-      profit.value = res.map(r=>{
-        console.log('ddfdf', r)
-        const v = ((r.actualQty*100)/r.qty).toFixed()
-        let c = ''
-        if (v-80<=0) {
-          c= '#C8033E';
-        }else if(v-90>=0){
-          c= '#039EC8';
-        }else {
-          c= '#EBAF00';
-        }
-
-        return{
-        ...r, 
-        color: c
-      }})
+      res.forEach((i, wk)=>{
+        arr.push(
+          {
+          ...i, 
+          rate: 100, 
+          type: 'a', 
+          },
+          {...i,type:'b' ,rate:Number(i.rate)},
+          
+        )
+      })
+      profit.value = arr
     })
   }
-  const _GetFlMaterialPlan =()=>{
-    GetFlMaterialPlan().then(res=>{
+  const _GetShipDiffDetailOfWeek =()=>{
+    GetShipDiffDetailOfWeek().then(res=>{
       console.log('ggg', res)
-      tableData.value = res
+      tableData.value = res.concat([{},{},{},{},{},{}]).slice(0,6)
     })
   }
 

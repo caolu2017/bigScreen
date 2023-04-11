@@ -34,3 +34,18 @@ import { post, get } from './httpService'
   return get('/api/1/dashboard/cpc/GetCpcShipRateOfMonth', data)
 }
  
+ export function GetShipDiffDetailOfWeek (data) {
+  return get('/api/1/dashboard/cpc/GetShipDiffDetailOfWeek', data)
+}
+ export function GetCpcWarehouseRateOfMonth (data) {
+  return get('/api/1/dashboard/cpc/GetCpcWarehouseRateOfMonth', data)
+}
+ 
+ export function GetShipRateOfWeek (data) {
+  return get('/api/1/dashboard/cpc/GetShipRateOfWeek', data)
+}
+ 
+//  export function GetShipDiffDetailOfWeek (data) {
+//   return get('/api/1/dashboard/cpc/GetShipDiffDetailOfWeek', data)
+// }
+ 

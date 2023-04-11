@@ -19,13 +19,20 @@ export default{
 
   const propsHeight = ref(0)
 
+  let chart = null
+
   watch(() => [props.height, props.fabu], (newValue, oldValue) => {
     propsHeight.value = newValue[0]
 
     console.log('ssss', props.height, newValue[0])
     if(!newValue||props.fabu.length==0) return 
 
-    const chart = new Chart({
+    if(chart){
+      chart.changeData(props.fabu)
+      return
+    }
+    
+     chart = new Chart({
     container: 'revenue',
     autoFit: true,
     height: props.height,

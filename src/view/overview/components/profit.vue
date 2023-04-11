@@ -32,9 +32,17 @@
     {  year: '2022.09', value: 160 },
   ];
 
+  let chart = null
+
   watch(() => [props.height, props.tableData], (newValue, oldValue) => {
     if(!props.height||props.tableData.length==0) return
-    const chart = new Chart({
+
+    if(chart){
+      chart.changeData(props.tableData)
+      return
+    }
+
+    chart = new Chart({
       container: 'profit',
       autoFit: true,
       height: props.height,

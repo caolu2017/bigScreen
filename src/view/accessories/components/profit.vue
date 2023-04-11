@@ -24,21 +24,21 @@
     height: 320,
   })
 
-  const fruits = [
-    {year: '2022.05', value: 260 },
-    { year: '2022.06', value: 210 },
-    { year: '2022.07', value: 160 },
-    { year: '2022.08', value: 60 },
-    {  year: '2022.09', value: 160 },
-  ];
+  let chart =null
 
   watch(() => [props.height, props.tableData], (newValue, oldValue) => {
     if(!props.height||props.tableData.length==0) return
-    const chart = new Chart({
+
+    if(chart){
+      chart.changeData(props.tableData)
+      return
+    }
+    chart = new Chart({
       container: 'profit',
       autoFit: true,
       height: props.height,
     });
+    
     chart.data(props.tableData)
     chart.scale('actualQty', {
         min: 0,

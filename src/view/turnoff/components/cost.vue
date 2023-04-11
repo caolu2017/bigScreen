@@ -1,12 +1,21 @@
+<!--
+ * @Author: caolu 64294@yangzijiang.com
+ * @Date: 2023-01-06 13:54:15
+ * @LastEditors: caolu 64294@yangzijiang.com
+ * @LastEditTime: 2023-04-11 15:22:53
+ * @Description: 营业总收入
+-->
 <script lang="ts">
 export default{
   name: 'Cost'
 }
 </script>
 <script setup lang="ts">
-	import { computed, onMounted, watch, ref, toRefs } from 'vue'
+	import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 	import chartTitle from './chartTitle.vue'
-	import { Chart } from '@antv/g2'
+  	import { Chart } from '@antv/g2'
+
+
 
   interface costProps {
     Lingliao: ()=>[],
@@ -18,101 +27,117 @@ export default{
     height: 320,
   })
 
- 
+  let chart = null
+
+//  var data = [{
+//     country: '巴西',
+//     population: 18203
+//   }, {
+//     country: '印尼',
+//     population: 23489
+//   }, {
+//     country: '美国',
+//     population: 29034
+//   }, {
+//     country: '印度',
+//     population: 104970
+//   }, {
+//     country: '中国',
+//     population: 131744
+//   }];
+
   watch(() => [props.height, props.Lingliao], (newValue, oldValue) => {
-    if(!props.height||props.Lingliao.length==0) return
-    const chart = new Chart({
-      container: 'cost',
+    if(props.Lingliao.length==0)return
+
+    if(chart){
+      chart.changeData(props.Lingliao)
+      return
+    }
+
+    console.log('dddd', props.Lingliao)
+
+    chart = new Chart({
+      container: 'container',
       autoFit: true,
       height: props.height,
     });
-    chart.data(props.Lingliao)
-    chart.scale('days', {
+
+    chart.source(props.Lingliao);
+
+    chart.scale('rate', {
       min: 0,
-      max: 5,
+      max: 100,
     });
-
-    chart.appendPadding = 20
-    chart.tooltip(false);
-
-    chart.axis('days', {
-      label: {
-        formatter: text => {
-          console.log('text', text)
-          if(text==3||text==5){
-            return text
-          }
-          return '';
-        },
-        style: {
-          fill: '#FFFFFF',
-          fontFamily: 'D-DIN',
-        }
+  chart.axis('shipNo', {
+    tickLine: null,
+  line: null,
+    label: {
+      formatter: text => {
+        return '';
+      }
+    },
+  });
+  chart.appendPadding = [20,160,20,20]
+  chart.axis('rate', {
+    tickLine: null,
+  line: null,
+    label: {
+      formatter: text => {
+        return text+'%';
       },
-      grid: {
-        line: {
-          style: {
-            stroke: '#fff',
-            opacity: 0.5,
-            lineWidth: 0.5,
-            lineDash: [5, 5, 5]
-          }
+       style: {
+      fill: '#FFFFFF',
+      fontFamily: 'D-DIN',
+      fontSize:16,
+      fontWeight:700,
+    }
+    },
+    grid: {
+      line: {
+        style: {
+          stroke: '#C8033E',
+          opacity: 1,
+          lineWidth: 2,
+          lineDash: [5, 5, 5]
         }
       }
-    })
-    chart.legend(false)
-    chart.axis('lineName', {
-      label: {
-        style: {
-          fill: '#FFFFFF',
-          opacity: 0.8,
-          fontFamily: 'D-DIN',
-        }
-      },
-    })
-    
-    chart.interval()
-    .position('lineName*days')
-    .color('days', v => {
-      console.log('vvvv', v)
-      return v;
-    })
-    .adjust('stack')
-    .label('styleNo', (val, a) => {
-    const color = 'white';
+    },
+  });
+  
+  chart.coord().transpose();
+  chart.interval()
+  .position('shipNo*rate')
+  .label('rate*shipNo', (val, a) => {
     return {
-      position: 'middle',
-      content: val,
+      position: 'right',
+      content: val+'%   ('+a+')',
       autoRotate: false,
-      rotate: 45,
       style: {
-        fontSize: 12,
-        fill: color,
+        fontSize: 14,
+        fontWeight: 700,
+        fill: '#fff',
         lineWidth: 0,
         stroke: null,
         shadowBlur: 2,
-        shadowColor: 'rgba(0, 0, 0, .45)',
+        shadowColor: 'rgba(0, 0, 0, .45)'
       },
     };
-
-    
   });
-
-    chart.removeInteraction('active-region')
-
-
-    chart.render();
-  }),
-
+  chart.render();
+  })
   onMounted(()=>{
    
-  })
+    })
+
+    
 </script>
 
 <template>
   <div>
-    <chartTitle :title="'配套低於3天線別'" />
-    <div id="cost"></div>
+    <chartTitle :title="'本周出货订单，入库数达成率'" />
+    <div id="container">
+      
+    </div>
   </div>
   
 </template>
@@ -132,6 +157,10 @@ export default{
   }
   :deep(thead th ){
     border-bottom: 0!important;
+  }
+
+  :deep(tbody .el-table_1_column_3 .cell){
+    padding: 0!important;
   }
 
   :deep(.el-table tr){
@@ -158,6 +187,25 @@ export default{
   :deep(.el-table tbody .cell){
     // height: 100%;
     line-height: inherit;
+    border-right: 1px solid #fff;
+  }
+
+  :deep(.el-table tbody .el-table__cell:last-child .cell){
+    // height: 100%;
+    // line-height: inherit;
+    border-right: 1px solid transparent;
+    
+  }
+
+
+  // :deep(.el-table tbody .el-table__cell:not(:last-childs)){
+  //   // height: 100%;
+  //   // line-height: inherit;
+  //   border-right: 1px solid #fff;
+    
+  // }
+  :deep(.el-table thead .cell){
+    font-size: 18px;
   }
   :deep(.el-table){
     background-color: transparent!important;
@@ -175,14 +223,14 @@ export default{
 
 
   :deep(.el-table .el-table__cell){
-    font-weight: 400;
-    font-size: 14px;
-    color: #ffffffe0;
+    font-weight: bolder!important;;
+    font-size: 16px;
+    color: #fff;
   }
 
   #container{
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
 
     .table-header{
       background: rgba(250, 250, 250, 0.3);

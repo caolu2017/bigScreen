@@ -117,7 +117,7 @@ $width: calc(100% - 28px);
     display: flex;
     flex-direction: column;
     width: 42%;
-    background-image: linear-gradient(180deg, #053A52 3%, #00000003 96%);
+    background-image: linear-gradient(180deg, #053A52 100%, #00000003 21%);
     height: 99%;
 
     &:nth-child(3n){

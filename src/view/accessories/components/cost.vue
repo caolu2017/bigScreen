@@ -18,14 +18,23 @@ export default{
     height: 320,
   })
 
+  let chart =null
+
  
   watch(() => [props.height, props.Lingliao], (newValue, oldValue) => {
     if(!props.height||props.Lingliao.length==0) return
-    const chart = new Chart({
+    
+    if(chart){
+      chart.changeData(props.Lingliao)
+      return
+    }
+    
+    chart = new Chart({
       container: 'cost',
       autoFit: true,
       height: props.height,
     });
+
 
     console.log('props.Lingliao', props.Lingliao)
     chart.data(props.Lingliao)

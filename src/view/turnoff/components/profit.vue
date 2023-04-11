@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:53:19
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-10 13:44:03
+ * @LastEditTime: 2023-04-11 14:57:42
  * @Description: 利润总额
 -->
 <script lang="ts">
@@ -24,121 +24,123 @@
     height: 320,
   })
 
+  const fruits = [
+    {year: '2022.05', value: 260 },
+    { year: '2022.06', value: 210 },
+    { year: '2022.07', value: 160 },
+    { year: '2022.08', value: 60 },
+    {  year: '2022.09', value: 160 },
+  ];
+
+  let chart = null
+
   watch(() => [props.height, props.tableData], (newValue, oldValue) => {
     if(!props.height||props.tableData.length==0) return
-    const chart = new Chart({
+
+     if(chart){
+      chart.changeData(props.tableData)
+      return
+    }
+    
+     chart = new Chart({
       container: 'profit',
       autoFit: true,
       height: props.height,
     });
-    chart.data(props.tableData)
-    chart.scale('actualQty', {
-        min: 0,
-        max: props.tableData[0].qty,
-    });
-    chart.scale('qty', {
-        min: 0,
-        max: props.tableData[0].qty,
-    });
+
     chart.appendPadding = 20
-    chart.tooltip(false);
+    chart.scale('sumRate', {
+      min: 0,
+      max: 1,
+    });
+    chart.scale('rate', {
+      min: 0,
+      max: 100,
+    });
 
-    console.log('fffaaa', props.tableData[0].qty)
-
-    // chart.legend('name', false)
-
-    chart.axis('actualQty', {
-      label: {
-        formatter: text => {
-          return '';
-        }
-      },
-      grid: {
-        line: {
-          style: {
-            stroke: '#fff',
-            opacity: 0.5,
-            lineWidth: 0.5
-          }
-        }
-      }
-    })
-    chart.legend(false)
-    chart.axis('qty', {
-      label: {
-        formatter: text => {
-          return '';
-        }
-      },
-      grid: {
-        line: {
-          style: {
-            opacity: 0,
-          }
-        }
-      }
-    })
-
-    chart.axis('lineName', {
+    chart.data(props.tableData);
+    chart.axis('rate', false);
+    chart.axis('sumRate', false);
+    chart.axis('wk', {
       label: {
         style: {
           fill: '#FFFFFF',
-          opacity: 0.8,
+          opacity: 1,
+          fontSize:16,
+          fontWeight: 700,
           fontFamily: 'D-DIN',
+        }
+      }
+    });
+    chart.legend({
+      position: 'right-top',
+      offsetY: 20,
+      custom: true,
+      items: [{id:0, name:'当周达成率',marker:{symbol:'square', style:{fill: '#039EC8'}}},
+      {id:1, name:'累積件數達成率',marker:{symbol:'square', style:{fill: '#fff'}}}],
+      itemName: {
+        style: (item, index: number, items)=>{
+          return {
+            fill: '#fff',
+            fontWeight: 700,
+            cursor:'pointer',
+            fontSize:  14,
+          }
+
         }
       },
     })
-    
-    chart.interval()
-    .position('lineName*actualQty')
-
-    .color('color', v => {
-      return v;
-    })
-    .adjust('stack')
-    .label('styleNo', (val, a) => {
-    const color = 'white';
+    chart.tooltip({
+      shared: true,
+      showMarkers: false,
+    });
+  chart
+  .interval()
+  .position('wk*rate')
+  .color('type', (t)=>{
+    if(t=='b'){
+      return '#039EC8'
+    }else{
+      return '#FFD9BF'
+    }
+  })
+  // .color('type', ['#039EC8', '#FFD9BF'])
+  
+  .label('rate', (val) => {
     return {
       position: 'middle',
-      // offset: 0,
-      content: val,
-      autoRotate: false,
-      rotate: 45,
-      style: {
-        fontSize: 12,
-        fill: color,
-        lineWidth: 0,
-        stroke: null,
-        shadowBlur: 2,
-        shadowColor: 'rgba(0, 0, 0, .45)',
+      offset: 0,
+      content: (originData) => {
+        return originData.type=='b'?originData.rate + '%':'';
       },
+      style: {
+        fill: '#fff',
+        fontSize: 16,
+        fontWeight: 500,
+      }
     };
-
-    
   });
 
-    chart.removeInteraction('active-region')
+  chart.line()
+  .position('wk*sumRate')
+  .color('#FF7500')
+  .label('rate', (val) => {
+    return {
+      position: 'middle',
+      offset: 0,
+      content: (originData) => {
+        return originData.type=='b'?(originData.sumRate*100) + '%':'';
+      },
+      style: {
+        fill: '#fff',
+        fontSize: 16,
+        fontWeight: 500,
+      }
+    };
+  });
+  chart.removeInteraction('active-region')
 
-
-    props.tableData.forEach((item) => {
-      const t= ((item.actualQty*100)/item.qty).toFixed()+'%'
-      chart
-        .annotation()
-        .text({
-          position: [item.lineName, item.actualQty],
-          content: t,
-          style: {
-            textAlign: 'center',
-            fontSize: 12,
-            stroke: '#fff',
-            fill: '#fff'
-          },
-          offsetY: -10,
-        })
-    });
-
-
-    chart.render();
+  chart.render();
   }),
 
   onMounted(()=>{
@@ -149,9 +151,8 @@
 </script>
 
 <template>
-  <div style="position: relative;">
-    <chartTitle :title="'已派工，尚未完成清單與進度'" />
-    <div class="line">100%</div>
+  <div style="position: relative;" >
+    <chartTitle :title="'本月入库数累积达成率（By Week）'" />
     <div id="profit"></div>
   </div>
 </template>

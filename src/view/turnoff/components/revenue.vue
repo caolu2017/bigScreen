@@ -5,7 +5,7 @@ export default{
 </script>
 <script setup lang="ts">
 	import { computed, onMounted, watch, ref, toRefs } from 'vue'
-  import { Chart } from '@antv/g2';
+	import { Chart } from '@antv/g2'
   import chartTitle from './chartTitle.vue'
 
   interface costProps {
@@ -19,34 +19,120 @@ export default{
 
   const propsHeight = ref(0)
 
+  let chart = null
+
+
   watch(() => [props.height, props.fabu], (newValue, oldValue) => {
     propsHeight.value = newValue[0]
 
-    console.log('ssss', props.height, props.fabu)
+    console.log('ssssprops.fabu', props.fabu)
     if(!newValue||props.fabu.length==0) return 
 
-    const chart = new Chart({
+    if(chart){
+      chart.changeData(props.fabu)
+      return
+    }
+    
+     chart = new Chart({
       container: 'revenue',
       autoFit: true,
-      height: newValue[0],
-    });
-    chart.data(props.fabu);
-    
-    chart.scale('rate',{
-        min: 0,
-        max: 100,
-        formatter(val) {
-          return '';
-        },
+      height: props.height,
     });
 
-    chart
-    .interval()
-    .position('wk*rate')
-    // .color('country')
-    .adjust('stack');
-      chart.render();
+    chart.appendPadding = 20
+    chart.scale('sumRate', {
+      min: 0,
+      max: 1,
     });
+    chart.scale('rate', {
+      min: 0,
+      max: 100,
+    });
+
+    chart.data(props.fabu);
+    chart.axis('rate', false);
+    chart.axis('sumRate', false);
+    chart.axis('wk', {
+      label: {
+        style: {
+          fill: '#FFFFFF',
+          opacity: 1,
+          fontSize:16,
+          fontWeight: 700,
+          fontFamily: 'D-DIN',
+        }
+      }
+    });
+    chart.legend({
+      position: 'right-top',
+      offsetY: 20,
+      custom: true,
+      items: [{id:0, name:'当周达成率',marker:{symbol:'square', style:{fill: '#039EC8'}}},
+      {id:1, name:'累積件數達成率',marker:{symbol:'square', style:{fill: '#FF7500'}}}],
+      itemName: {
+        style: (item, index: number, items)=>{
+          return {
+            fill: '#fff',
+            fontWeight: 700,
+            cursor:'pointer',
+            fontSize:  14,
+          }
+
+        }
+      },
+    })
+    chart.tooltip({
+      shared: true,
+      showMarkers: false,
+    });
+  chart
+  .interval()
+  .position('wk*rate')
+  .color('type', (t)=>{
+    if(t=='b'){
+      return '#039EC8'
+    }else{
+      return '#FFD9BF'
+    }
+  })
+  // .color('type', ['#039EC8', '#FFD9BF'])
+  
+  .label('rate', (val) => {
+    return {
+      position: 'middle',
+      offset: 0,
+      content: (originData) => {
+        return originData.type=='b'?originData.rate + '%':'';
+      },
+      style: {
+        fill: '#fff',
+        fontSize: 16,
+        fontWeight: 500,
+      }
+    };
+  });
+
+  chart.line()
+  .position('wk*sumRate')
+  .color('#FF7500')
+  .label('rate', (val) => {
+    return {
+      position: 'middle',
+      offset: 0,
+      content: (originData) => {
+        return originData.type=='b'?(originData.sumRate*100) + '%':'';
+      },
+      style: {
+        fill: '#fff',
+        fontSize: 16,
+        fontWeight: 500,
+      }
+    };
+  });
+  chart.removeInteraction('active-region')
+
+  chart.render();
+  });
 
   onMounted(()=>{
    
@@ -57,8 +143,8 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'本月出貨累積達成率(By Week)'" />
-    <div id="revenue" :style="{'height':height-20+'px'}"></div>
+    <chartTitle :title="'本月出货累积达成率（By Week）'" />
+    <div id="revenue"></div>
   </div>
 </template>
 

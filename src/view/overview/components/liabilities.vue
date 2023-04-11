@@ -143,9 +143,7 @@ export default{
   :deep(tbody .el-table_1_column_4){
     border:0;
   }
-  :deep(tbody .el-table_1_column_4 .cell){
-    padding: 0!important;
-  }
+  
   :deep(.el-table tbody .cell){
     // height: 100%;
     line-height: inherit;

@@ -11,12 +11,12 @@ const routes = [
     title: '',
     component: () => import('@/view/accessories/index.vue')
   },
-  // {
-  //   path: '/turnoff',
-  //   name: 'turnoff',
-  //   title: '',
-  //   component: () => import('@/view/turnoff/index.vue')
-  // },
+  {
+    path: '/turnoff',
+    name: 'turnoff',
+    title: '',
+    component: () => import('@/view/turnoff/index.vue')
+  },
   // {
   //   path: '/industryOverview',
   //   name: 'industryOverview',

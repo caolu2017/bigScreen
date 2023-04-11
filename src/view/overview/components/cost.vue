@@ -68,6 +68,10 @@ export default{
     border-bottom: 0!important;
   }
 
+  :deep(tbody .el-table_1_column_3 .cell){
+    padding: 0!important;
+  }
+
   :deep(.el-table tr){
     background-color: transparent!important;
     padding: 0;
