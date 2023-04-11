@@ -36,7 +36,7 @@ import { GetPgFinish, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMateria
     const m = now.getMonth()+1
     const d = now.getDate()
     if(str=='zeroDays'){
-      return '當天'
+      return ' 当天'
     }else if(str=='oneDays'){
       return `+1天`
     }else if(str=='twoDays'){
@@ -70,8 +70,22 @@ import { GetPgFinish, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMateria
 
   const _GetFlPgLessthan3dByLine =()=>{
     GetFlPgLessthan3dByLine().then(res=>{
-      console.log('ccc', res)
+      // console.log('ccc', res)
       Lingliao.value = res
+      // Lingliao.value = [
+      // {
+      //   lineName:'1',
+      //   days: 2,
+      // },
+      // {
+      //   lineName:'3',
+      //   days: 3,
+      // },
+      // {
+      //   lineName:'2',
+      //   days: 5,
+      // }
+      // ]
     })
   }
   const _GetFlFaliaoProgress =()=>{
@@ -98,7 +112,7 @@ import { GetPgFinish, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMateria
   const _GetFlMaterialPlan =()=>{
     GetFlMaterialPlan().then(res=>{
       console.log('ggg', res)
-      tableData.value = res
+      tableData.value = res.concat([{},{},{},{},{},{},{},{},{},{}]).slice(0, 6)
     })
   }
 

@@ -25,8 +25,8 @@ export default{
     height: 44px;
     line-height: 44px;
     color: #fff;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 500;
     position: relative;
     margin-bottom: 10px;
     

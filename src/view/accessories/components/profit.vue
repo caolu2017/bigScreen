@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:53:19
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-10 13:44:03
+ * @LastEditTime: 2023-04-11 15:38:06
  * @Description: 利润总额
 -->
 <script lang="ts">
@@ -23,6 +23,14 @@
   const props = withDefaults(defineProps<costProps>(), {
     height: 320,
   })
+
+  const fruits = [
+    {year: '2022.05', value: 260 },
+    { year: '2022.06', value: 210 },
+    { year: '2022.07', value: 160 },
+    { year: '2022.08', value: 60 },
+    {  year: '2022.09', value: 160 },
+  ];
 
   watch(() => [props.height, props.tableData], (newValue, oldValue) => {
     if(!props.height||props.tableData.length==0) return
@@ -57,8 +65,7 @@
         line: {
           style: {
             stroke: '#fff',
-            opacity: 0.5,
-            lineWidth: 0.5
+            lineWidth: 0.5,
           }
         }
       }
@@ -83,7 +90,9 @@
       label: {
         style: {
           fill: '#FFFFFF',
-          opacity: 0.8,
+          opacity: 1,
+          fontSize:16,
+          fontWeight: 700,
           fontFamily: 'D-DIN',
         }
       },
@@ -105,7 +114,8 @@
       autoRotate: false,
       rotate: 45,
       style: {
-        fontSize: 12,
+        fontSize: 14,
+        fontWeight: 700,
         fill: color,
         lineWidth: 0,
         stroke: null,
@@ -129,8 +139,9 @@
           content: t,
           style: {
             textAlign: 'center',
-            fontSize: 12,
+            fontSize: 14,
             stroke: '#fff',
+            fontWeight: 700,
             fill: '#fff'
           },
           offsetY: -10,
@@ -149,8 +160,8 @@
 </script>
 
 <template>
-  <div style="position: relative;">
-    <chartTitle :title="'已派工，尚未完成清單與進度'" />
+  <div style="position: relative;" >
+    <chartTitle :title="'已派工，尚未完成清单与进度'" />
     <div class="line">100%</div>
     <div id="profit"></div>
   </div>

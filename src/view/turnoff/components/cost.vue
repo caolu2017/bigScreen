@@ -1,19 +1,12 @@
-<!--
- * @Author: caolu 64294@yangzijiang.com
- * @Date: 2023-01-06 13:54:15
- * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-11 15:22:53
- * @Description: 营业总收入
--->
 <script lang="ts">
 export default{
   name: 'Cost'
 }
 </script>
 <script setup lang="ts">
-	import { computed, onMounted, reactive, ref, toRefs } from 'vue'
+	import { computed, onMounted, watch, ref, toRefs } from 'vue'
 	import chartTitle from './chartTitle.vue'
-
+	import { Chart } from '@antv/g2'
 
   interface costProps {
     Lingliao: ()=>[],
@@ -25,28 +18,101 @@ export default{
     height: 320,
   })
 
+ 
+  watch(() => [props.height, props.Lingliao], (newValue, oldValue) => {
+    if(!props.height||props.Lingliao.length==0) return
+    const chart = new Chart({
+      container: 'cost',
+      autoFit: true,
+      height: props.height,
+    });
+    chart.data(props.Lingliao)
+    chart.scale('days', {
+      min: 0,
+      max: 5,
+    });
+
+    chart.appendPadding = 20
+    chart.tooltip(false);
+
+    chart.axis('days', {
+      label: {
+        formatter: text => {
+          console.log('text', text)
+          if(text==3||text==5){
+            return text
+          }
+          return '';
+        },
+        style: {
+          fill: '#FFFFFF',
+          fontFamily: 'D-DIN',
+        }
+      },
+      grid: {
+        line: {
+          style: {
+            stroke: '#fff',
+            opacity: 0.5,
+            lineWidth: 0.5,
+            lineDash: [5, 5, 5]
+          }
+        }
+      }
+    })
+    chart.legend(false)
+    chart.axis('lineName', {
+      label: {
+        style: {
+          fill: '#FFFFFF',
+          opacity: 0.8,
+          fontFamily: 'D-DIN',
+        }
+      },
+    })
+    
+    chart.interval()
+    .position('lineName*days')
+    .color('days', v => {
+      console.log('vvvv', v)
+      return v;
+    })
+    .adjust('stack')
+    .label('styleNo', (val, a) => {
+    const color = 'white';
+    return {
+      position: 'middle',
+      content: val,
+      autoRotate: false,
+      rotate: 45,
+      style: {
+        fontSize: 12,
+        fill: color,
+        lineWidth: 0,
+        stroke: null,
+        shadowBlur: 2,
+        shadowColor: 'rgba(0, 0, 0, .45)',
+      },
+    };
+
+    
+  });
+
+    chart.removeInteraction('active-region')
+
+
+    chart.render();
+  }),
 
   onMounted(()=>{
    
-    })
+  })
 </script>
 
 <template>
   <div>
-    <chartTitle :title="'当天领布清单与配布完成'" />
-    <div id="container" :style="{'height':height-10+'px'}">
-      <el-table :data="Lingliao" style="width: 100%" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
-        <el-table-column prop="woNo" label="工单号" width="180" />
-        <el-table-column prop="styleNo" label="款号" width="120" />
-        
-        <el-table-column prop="progress" class="process" label="进度">
-          <template #default="scope">
-            <div v-if="scope.row['progress']" class="progress" :style="{'width':scope.row['progress']+'%' }">{{ scope.row['progress'] }}%</div>
-            <div v-else>-</div>
-          </template>
-        </el-table-column>
-      </el-table>
-    </div>
+    <chartTitle :title="'配套低於3天線別'" />
+    <div id="cost"></div>
   </div>
   
 </template>
@@ -92,25 +158,6 @@ export default{
   :deep(.el-table tbody .cell){
     // height: 100%;
     line-height: inherit;
-    border-right: 1px solid #fff;
-  }
-
-  :deep(.el-table tbody .el-table__cell:last-child .cell){
-    // height: 100%;
-    // line-height: inherit;
-    border-right: 1px solid transparent;
-    
-  }
-
-
-  // :deep(.el-table tbody .el-table__cell:not(:last-childs)){
-  //   // height: 100%;
-  //   // line-height: inherit;
-  //   border-right: 1px solid #fff;
-    
-  // }
-  :deep(.el-table thead .cell){
-    font-size: 18px;
   }
   :deep(.el-table){
     background-color: transparent!important;
@@ -128,14 +175,14 @@ export default{
 
 
   :deep(.el-table .el-table__cell){
-    font-weight: bolder!important;;
-    font-size: 16px;
-    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ffffffe0;
   }
 
   #container{
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
 
     .table-header{
       background: rgba(250, 250, 250, 0.3);

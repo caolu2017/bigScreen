@@ -2,11 +2,11 @@
 
 <template>
   <div>
-    <img class="logo" src="@/assets/img/logo@2x.png" alt="">
-    <div class="routeJump-prev" @click="handleJumpRoute(0)">
+    <img class="logo" src="@/assets/img/logo.png" alt="">
+    <div class="routeJump-prev icon" @click="handleJumpRoute(0)">
         <img src="@/assets/img/routePrev.svg" alt="" />
       </div>
-      <div class="routeJump-next" @click="handleJumpRoute(1)">
+      <div class="routeJump-next icon" @click="handleJumpRoute(1)">
         <img src="@/assets/img/routeNext.svg" alt="" />
       </div>
   </div>
@@ -110,6 +110,14 @@ const handleJumpRoute = next => {
 }
 .fade-leave-active {
   animation: fade-out 0.5s;
+}
+
+.icon{
+  opacity: 0;
+
+  &::hover{
+    opacity: 1;
+  }
 }
 @keyframes fade-in {
   0% {

@@ -65,63 +65,16 @@ export default{
 
 
 <style scoped lang="scss">
-.progress{
-  height: 100%;
-  background: #039EC8;
-  padding-left: 10px;
-  border-bottom: 1px solid #fff;
-}
-
   :deep(.chart-header){
     margin-bottom: 0;
   }
+
   :deep(thead th ){
     border-bottom: 0!important;
   }
 
   :deep(.el-table tr){
     background-color: transparent!important;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  :deep(.el-table tbody tr){
-    height: 47px;
-    line-height: 47px;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  :deep(.el-table tbody td){
-    padding: 0!important;
-  }
-
-  :deep(thead .el-table_1_column_4){
-    border:0;
-  }
-  :deep(tbody .el-table_1_column_4 .cell){
-    padding: 0!important;
-  }
-  :deep(.el-table tbody .cell){
-    // height: 100%;
-    line-height: inherit;
-    border-right: 1px solid #fff;
-  }
-
-  :deep(.el-table tbody .el-table__cell:last-child .cell){
-    // height: 100%;
-    // line-height: inherit;
-    border-right: 1px solid transparent;
-    
-  }
-
-
-  // :deep(.el-table tbody .el-table__cell:not(:last-childs)){
-  //   // height: 100%;
-  //   // line-height: inherit;
-  //   border-right: 1px solid #fff;
-    
-  // }
-  :deep(.el-table thead .cell){
-    font-size: 18px;
   }
   :deep(.el-table){
     background-color: transparent!important;
@@ -134,19 +87,22 @@ export default{
   :deep(.el-table thead th:not(:last-child) .cell){
     border-right:1px solid #fff;
   }
-
-
+  :deep(.el-table tbody tr){
+    height: 47px;
+    line-height: 47px;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
 
   :deep(.el-table .el-table__cell){
-    font-weight: bolder!important;;
-    font-size: 16px;
-    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ffffffe0;
   }
 
   #container{
     width: 100%;
-    overflow: hidden;
 
     .table-header{
       background: rgba(250, 250, 250, 0.3);
@@ -167,24 +123,5 @@ export default{
 
       }
     }
-  }
-
-  :deep(.el-progress__text span){
-    color: #fff;
-  }
-
-  div::-webkit-scrollbar {
-    width: 4px;
-  }
-  div::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-    opacity: 0.2;
-    background: fade(#039EC8, 60%);
-  }
-  div::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-    border-radius: 0;
-    background: fade(#039EC8, 30%);
   }
 </style>

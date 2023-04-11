@@ -32,16 +32,17 @@ export default{
       label: {
         type: 'inner',
         offset: '-50%',
-        formatter: ({value}) => (value*100)+'%',
+        formatter: ({value}) => (value*100).toFixed()+'%',
         style: {
           textAlign: 'center',
-          fontSize: 14,
+          fontSize: 20,
+          fontWeight: 500,
           color: '#fff'
         },
       },
       colorField: 'city', // 部分图表使用 seriesField
       color: ({ city }) => {
-        if(city == '當天'){
+        if(city == ' 当天'){
           return '#039EC8';
         }else if(city == '+1天'){
           return '#EBAF00';
@@ -56,9 +57,9 @@ export default{
         offsetX: -80,
         itemName: {
           style: {
+            fontSize:  20,
             fill: '#fff',
-            fontWeight: 400,
-            fontSize: 14
+            fontWeight: 700,
           },
           
         }

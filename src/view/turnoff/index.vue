@@ -12,7 +12,7 @@
   import axios from 'axios'
   import { dataFormatter } from './utils'
   import { pxtorem } from './utils'
-import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/index'
+import { GetCpcShipRateOfMonth, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMaterialPlan } from '../../../api/index'
 
   const card = ref(null)
   const height = ref(0)
@@ -25,53 +25,27 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
   onMounted(()=>{
     height.value = card.value.$el.clientHeight -40
 
-    _getFabu()
-    _GetLingliao()
-    _GetFaliao()
-    _GetMaterialPlan()
+    _GetCpcShipRateOfMonth()
+    // _GetFlPgLessthan3dByLine()
+    // _GetFlFaliaoProgress()
+    // _GetFlMaterialPlan()
   })
 
-  const filterDay=(str)=>{
-    const now = new Date()
-    const m = now.getMonth()+1
-    const d = now.getDate()
-    if(str=='zeroDays'){
-      return ' 当天'
-    }else if(str=='oneDays'){
-      return `+1天`
-    }else if(str=='twoDays'){
-      return `+2天`
-    }else if(str=='threeDays'){
-      return `+3天`
-    }else if(str=='fourDays'){
-      return `+4天`
-    }else if(str=='fiveDays'){
-      return `+5天`
-    }
-  }
-
-  const _getFabu=()=> {
-    getFabu().then(res=>{
-      console.log('res', res)
-      const arr = []
-      for(let key  in res){
-        arr.push({'city': filterDay(key), 'value': Number(res[key])})
-      }
-
-      console.log('arrarr', arr)
-      
-      fabu.value = arr
+  const _GetCpcShipRateOfMonth=()=> {
+    GetCpcShipRateOfMonth().then(res=>{
+      console.log('resss', res)
+      fabu.value = res
     })
   }
 
-  const _GetLingliao =()=>{
-    GetLingliao().then(res=>{
+  const _GetFlPgLessthan3dByLine =()=>{
+    GetFlPgLessthan3dByLine().then(res=>{
       console.log('ccc', res)
-      Lingliao.value = res.slice(0, 6)
+      Lingliao.value = res
     })
   }
-  const _GetFaliao =()=>{
-    GetFaliao().then(res=>{
+  const _GetFlFaliaoProgress =()=>{
+    GetFlFaliaoProgress().then(res=>{
       
       profit.value = res.map(r=>{
         console.log('ddfdf', r)
@@ -91,26 +65,10 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
       }})
     })
   }
-  const _GetMaterialPlan =()=>{
-    GetMaterialPlan().then(res=>{
-      tableData.value = res.concat([{},{},{},{},{},{},{},{},{},{}]).slice(0, 6)
-      console.log('cvcvcv', tableData.value)
-      
-      // .map(r=>{
-      //   const v = ((r.actualQty*100)/r.qty).toFixed()
-      //   let c = ''
-      //   if (v-80<=0) {
-      //     c= '#C8033E';
-      //   }else if(v-90>=0){
-      //     c= '#039EC8';
-      //   }else {
-      //     c= '#EBAF00';
-      //   }
-
-      //   return{
-      //   ...ref, 
-      //   color: c
-      // }})
+  const _GetFlMaterialPlan =()=>{
+    GetFlMaterialPlan().then(res=>{
+      console.log('ggg', res)
+      tableData.value = res
     })
   }
 

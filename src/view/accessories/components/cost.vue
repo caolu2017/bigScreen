@@ -26,10 +26,12 @@ export default{
       autoFit: true,
       height: props.height,
     });
+
+    console.log('props.Lingliao', props.Lingliao)
     chart.data(props.Lingliao)
     chart.scale('days', {
-        min: 0,
-        max: 5,
+      min: 0,
+      max: 5,
     });
 
     chart.appendPadding = 20
@@ -47,6 +49,8 @@ export default{
         style: {
           fill: '#FFFFFF',
           fontFamily: 'D-DIN',
+          fontSize:16,
+          fontWeight:700,
         }
       },
       grid: {
@@ -65,7 +69,9 @@ export default{
       label: {
         style: {
           fill: '#FFFFFF',
-          opacity: 0.8,
+          opacity: 1,
+          fontSize:16,
+          fontWeight:700,
           fontFamily: 'D-DIN',
         }
       },
@@ -73,8 +79,13 @@ export default{
     
     chart.interval()
     .position('lineName*days')
-    .color('color', v => {
-      return v;
+    .color('days', v => {
+      if(Number(v[1])<3){
+        return '#C8033E';
+      }else{
+        return '#EBAF00';
+      }
+      
     })
     .adjust('stack')
     .label('styleNo', (val, a) => {
@@ -174,9 +185,9 @@ export default{
 
 
   :deep(.el-table .el-table__cell){
-    font-weight: 400;
-    font-size: 14px;
-    color: #ffffffe0;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
   }
 
   #container{
@@ -190,8 +201,8 @@ export default{
       align-items: center;
 
       span{
-        font-weight: 600;
-        font-size: 14px;
+        font-weight: bold;
+        font-size: 20px;
         color: #ffffff;
         padding-left: 8px;
         box-sizing: border-box;
@@ -206,6 +217,8 @@ export default{
 
   :deep(.el-progress__text span){
     color: #fff;
+    font-weight: bold;
+        font-size: 16px;
   }
 
   div::-webkit-scrollbar {

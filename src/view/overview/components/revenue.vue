@@ -55,9 +55,10 @@ export default{
     .label('value', (val, t) => {
       return {
         offset: -30,
-        content: val*100 + '%',
+        content: (val*100).toFixed() + '%',
         style: {
-          fontSize: 14,
+          fontSize: 20,
+          fontWeight: 500,
           fill: '#fff',
           shadowBlur: 2,
           shadowColor: 'rgba(0, 0, 0, .45)',
@@ -74,9 +75,9 @@ export default{
         style: (item, index: number, items)=>{
           return {
             fill: '#fff',
-            fontWeight: 400,
+            fontWeight: 700,
             cursor:'pointer',
-            fontSize:  14,
+            fontSize:  20,
           }
 
         }
@@ -95,7 +96,7 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'派工單完成情況(周)'" />
+    <chartTitle :title="'派工单完成情况（周）'" />
     <div id="revenue"></div>
   </div>
 </template>

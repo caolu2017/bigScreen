@@ -30,3 +30,7 @@ import { post, get } from './httpService'
   return get('/api/1/dashboard/fl/GetFlMaterialPlan', data)
 }
  
+ export function GetCpcShipRateOfMonth (data) {
+  return get('/api/1/dashboard/cpc/GetCpcShipRateOfMonth', data)
+}
+ 
