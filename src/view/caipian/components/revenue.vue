@@ -11,6 +11,7 @@ import chartTitle from "./chartTitle.vue";
 interface costProps {
   height: number;
   fabu: () => {};
+  revenueList: () => [];
 }
 
 const props = withDefaults(defineProps<costProps>(), {
@@ -22,15 +23,13 @@ const propsHeight = ref(0);
 let chart = null;
 
 watch(
-  () => [props.height, props.fabu],
+  () => [props.height, props.revenueList],
   (newValue, oldValue) => {
     propsHeight.value = newValue[0];
 
-    console.log("ssss", props.height, newValue[0]);
-    if (!newValue || props.fabu.length == 0) return;
-
+    if (!newValue || props.revenueList.length == 0) return;
     if (chart) {
-      chart.changeData(props.fabu);
+      chart.changeData(props.revenueList);
       return;
     }
 
@@ -39,9 +38,8 @@ watch(
       autoFit: true,
       height: props.height - 80,
     });
-
-    console.log("ssssfabu", props.fabu);
-    chart.data(props.fabu);
+console.log('revenueList', props.revenueList)
+    chart.data(props.revenueList);
     chart.tooltip(false);
     chart.coordinate("theta", {
       radius: 1,
@@ -51,11 +49,11 @@ watch(
       .interval()
       .adjust("stack")
       .position("value")
-      .color("city", ["#039EC8", "#EBAF00", "#FF7500", "#C8033E"])
+      .color("city", ["#18BF3B", "#039EC8", "#EBAF00", "#C8033E"])
       .label("value", (val, t) => {
         return {
           offset: -30,
-          content: (val * 100).toFixed() + "%",
+          content: val?val + "%":'',
           style: {
             fontSize: 20,
             fontWeight: 500,
@@ -96,8 +94,8 @@ onMounted(() => {});
       <div class="tabs">
         <p>{{ "< 10 minute:" }} <span>{{props.fabu.lessthanten}}次</span></p>
         <p>{{ "> 10 minute:" }} <span>{{ props.fabu.graterthanten }}次</span></p>
-        <p>{{ "< 10 minute:" }} <span>100次</span></p>
-        <p>{{ "< 10 minute:" }} <span>100次</span></p>
+        <p>{{ "> 30 minute:" }} <span>{{ props.fabu.granterthan30 }}次</span></p>
+        <p>{{ "> 60 minute:" }} <span>{{ props.fabu.granterthan60 }}次</span></p>
       </div>
       <div id="revenue"></div>
     </div>
@@ -122,17 +120,18 @@ onMounted(() => {});
   background: #003246;
   border-radius: 12px;
   padding: 24px 30px;
-  width: 266px;
+  width: 240px;
   color: #fff;
   box-sizing: border-box;
 
   p {
+    display: flex;
     justify-content: space-between;
   }
 
   p:not(:last-child) {
     margin-bottom: 18px;
-    display: flex;
+    
   }
   // position: relative;
   // top: 40px;

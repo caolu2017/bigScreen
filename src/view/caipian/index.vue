@@ -32,6 +32,8 @@ const fabu = ref([]);
 const tableData = ref([]);
 const Lingliao = ref([]);
 const profit = ref([]);
+const revenue = ref([]);
+const revenueList = ref([]);
 let intervalID = null;
 
 onMounted(() => {
@@ -72,9 +74,28 @@ const _GetWlInv = () => {
 };
 const _GetEffCounts = () => {
   GetEffCounts().then((res) => {
-    fabu.value = res;
+    revenue.value = res;
+    const arr = []
+    for(let i in res){
+      arr.push({value: res[i], city: getfilter(i, res)})
+    }
+    revenueList.value = arr;
+    console.log('bbbbbbbbb',revenue.value,  arr)
   });
 };
+
+const getfilter = (i, res)=>{
+  console.log('haha', i, res)
+  if(i=='lessthanten'){
+    return '< 10 分钟'
+  }else if(i=='graterthanten'){
+    return '> 10 分钟'
+  }else if (i=='granterthan60'){
+    return '> 60 分钟'
+  }else if (i=='granterthan30'){
+    return '> 30 分钟'
+  }
+}
 </script>
 
 <template>
@@ -107,7 +128,8 @@ const _GetEffCounts = () => {
               ref="card"
               :height="height"
               class="item table"
-              :fabu="fabu"
+              :fabu="revenue"
+              :revenueList="revenueList"
             />
           </div>
         </div>
