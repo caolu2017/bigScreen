@@ -17,19 +17,17 @@ const routes = [
     title: '',
     component: () => import('@/view/turnoff/index.vue')
   },
-  // {
-  //   path: '/industryOverview',
-  //   name: 'industryOverview',
-  //   title: '财务总览',
-  //   component: () => import('@/view/overview/index.vue'),
-  // },
-
-  // // TODO: 修改
-  // {
-  //   path: '/overview',
-  //   name: 'indicatorOverview',
-  //   title: '财务总览',
-  //   component: () => import('@/view/overview/child.vue'),
-  // }
+  {
+    path: '/caipian',
+    name: 'caipian',
+    title: '',
+    component: () => import('@/view/caipian/index.vue'),
+  },
+  {
+    path: '/caijian',
+    name: 'caijian',
+    title: '',
+    component: () => import('@/view/caijian/index.vue'),
+  }
 ]
 export default routes

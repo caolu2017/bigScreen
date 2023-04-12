@@ -130,7 +130,7 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'配套低於3天線別'" />
+    <chartTitle :title="'配套低于3天线别'" />
     <div id="cost"></div>
   </div>
   

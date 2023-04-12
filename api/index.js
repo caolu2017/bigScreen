@@ -45,7 +45,19 @@ import { post, get } from './httpService'
   return get('/api/1/dashboard/cpc/GetShipRateOfWeek', data)
 }
  
-//  export function GetShipDiffDetailOfWeek (data) {
-//   return get('/api/1/dashboard/cpc/GetShipDiffDetailOfWeek', data)
-// }
+ export function GetWlTask (data) {
+  return get('/api/1/dashboard/wl/GetWlTask', data)
+}
+ 
+ export function GetWlInv (data) {
+  return get('/api/1/dashboard/wl/GetWlInv', data)
+}
+ 
+ export function GetLessthan3d (data) {
+  return get('/api/1/dashboard/wl/GetLessthan3d', data)
+}
+ 
+ export function GetEffCounts (data) {
+  return get('/api/1/dashboard/wl/GetEffCounts', data)
+}
  
