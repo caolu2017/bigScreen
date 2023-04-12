@@ -68,7 +68,7 @@ export default{
       offsetY: 20,
       custom: true,
       items: [{id:0, name:'当周达成率',marker:{symbol:'square', style:{fill: '#039EC8'}}},
-      {id:1, name:'累積件數達成率',marker:{symbol:'square', style:{fill: '#FF7500'}}}],
+      {id:1, name:'累积件数达成率',marker:{symbol:'square', style:{fill: '#FF7500'}}}],
       itemName: {
         style: (item, index: number, items)=>{
           return {
@@ -102,7 +102,7 @@ export default{
       position: 'middle',
       offset: 0,
       content: (originData) => {
-        return originData.type=='b'?originData.rate + '%':'';
+        return originData.type=='b'?originData.rate?(originData.rate + '%'):'':'';
       },
       style: {
         fill: '#fff',
@@ -112,15 +112,20 @@ export default{
     };
   });
 
-  chart.line()
+  const ds = props.fabu.filter(i=>i.type=='b')
+
+const view2 = chart.createView();
+view2.axis(false);
+view2.data(ds);
+view2.line()
   .position('wk*sumRate')
   .color('#FF7500')
   .label('rate', (val) => {
     return {
-      position: 'middle',
-      offset: 0,
+      position: 'top',
+      offsetY: -10,
       content: (originData) => {
-        return originData.type=='b'?(originData.sumRate*100) + '%':'';
+        return originData.type=='b'?(originData.sumRate?(originData.sumRate*100) + '%':''):'';
       },
       style: {
         fill: '#fff',
@@ -129,6 +134,8 @@ export default{
       }
     };
   });
+  view2.legend(false)
+  chart.tooltip(false);
   chart.removeInteraction('active-region')
 
   chart.render();

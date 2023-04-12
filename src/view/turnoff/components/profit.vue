@@ -1,10 +1,3 @@
-<!--
- * @Author: caolu 64294@yangzijiang.com
- * @Date: 2023-01-06 13:53:19
- * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-11 14:57:42
- * @Description: 利润总额
--->
 <script lang="ts">
   export default{
     name: 'Profit'
@@ -23,14 +16,6 @@
   const props = withDefaults(defineProps<costProps>(), {
     height: 320,
   })
-
-  const fruits = [
-    {year: '2022.05', value: 260 },
-    { year: '2022.06', value: 210 },
-    { year: '2022.07', value: 160 },
-    { year: '2022.08', value: 60 },
-    {  year: '2022.09', value: 160 },
-  ];
 
   let chart = null
 
@@ -72,24 +57,25 @@
         }
       }
     });
-    chart.legend({
-      position: 'right-top',
-      offsetY: 20,
-      custom: true,
-      items: [{id:0, name:'当周达成率',marker:{symbol:'square', style:{fill: '#039EC8'}}},
-      {id:1, name:'累積件數達成率',marker:{symbol:'square', style:{fill: '#fff'}}}],
-      itemName: {
-        style: (item, index: number, items)=>{
-          return {
-            fill: '#fff',
-            fontWeight: 700,
-            cursor:'pointer',
-            fontSize:  14,
-          }
+    chart.legend(false)
+    // chart.legend({
+    //   position: 'right-top',
+    //   offsetY: 20,
+    //   custom: true,
+    //   items: [{id:0, name:'当周达成率',marker:{symbol:'square', style:{fill: '#039EC8'}}},
+    //   {id:1, name:'累積件數達成率',marker:{symbol:'square', style:{fill: '#fff'}}}],
+    //   itemName: {
+    //     style: (item, index: number, items)=>{
+    //       return {
+    //         fill: '#fff',
+    //         fontWeight: 700,
+    //         cursor:'pointer',
+    //         fontSize:  14,
+    //       }
 
-        }
-      },
-    })
+    //     }
+    //   },
+    // })
     chart.tooltip({
       shared: true,
       showMarkers: false,
@@ -101,7 +87,7 @@
     if(t=='b'){
       return '#039EC8'
     }else{
-      return '#FFD9BF'
+      return '#052735'
     }
   })
   // .color('type', ['#039EC8', '#FFD9BF'])
@@ -111,7 +97,7 @@
       position: 'middle',
       offset: 0,
       content: (originData) => {
-        return originData.type=='b'?originData.rate + '%':'';
+        return originData.type=='b'?(originData.rate? originData.rate+ '%':''):'';
       },
       style: {
         fill: '#fff',
@@ -121,23 +107,20 @@
     };
   });
 
-  chart.line()
-  .position('wk*sumRate')
-  .color('#FF7500')
-  .label('rate', (val) => {
-    return {
-      position: 'middle',
-      offset: 0,
-      content: (originData) => {
-        return originData.type=='b'?(originData.sumRate*100) + '%':'';
-      },
-      style: {
-        fill: '#fff',
-        fontSize: 16,
-        fontWeight: 500,
-      }
-    };
-  });
+  const ds = props.tableData.filter(i=>i.type=='b')
+
+  const view2 = chart.createView();
+  view2.axis(false);
+  view2.data(ds);
+  view2
+    .line()
+   
+    .position('wk*rate')
+    .style({
+      stroke: '#fff',
+    })
+
+  chart.tooltip(false);
   chart.removeInteraction('active-region')
 
   chart.render();

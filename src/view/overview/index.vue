@@ -41,6 +41,7 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
   })
 
  onUnmounted(()=>{
+  clearInterval(intervalID)
   intervalID = null
  })
 

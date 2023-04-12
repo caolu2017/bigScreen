@@ -40,7 +40,8 @@ let intervalID = null
   })
 
  onUnmounted(()=>{
-intervalID = null
+  clearInterval(intervalID)
+  intervalID = null
   })
   const filterDay=(str)=>{
     const now = new Date()

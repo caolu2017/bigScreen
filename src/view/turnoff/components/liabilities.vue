@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-11 16:31:08
+ * @LastEditTime: 2023-04-12 14:00:57
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -101,7 +101,7 @@ export default{
             <div class="txt">{{ scope.row['shipDate']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="remainDays" label="剩余天数">
+        <el-table-column prop="remainDays" label="剩余天数" width="90">
           <template #default="scope">
             <div class="txt">{{ scope.row['remainDays']||'-' }}</div>
           </template>

@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-11 15:22:53
+ * @LastEditTime: 2023-04-12 14:05:29
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -68,6 +68,7 @@ export default{
       min: 0,
       max: 100,
     });
+    chart.tooltip(false);
   chart.axis('shipNo', {
     tickLine: null,
   line: null,

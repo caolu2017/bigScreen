@@ -4,7 +4,7 @@
   }
 </script>
 <script setup lang="ts">
-	import { computed, initCustomFormatter, onMounted, watch, ref,  } from 'vue'
+	import { computed, initCustomFormatter, onMounted, onUnmounted, ref,  } from 'vue'
   import Profit from './components/profit.vue'
 	import Revenue from './components/revenue.vue'
 	import Cost from './components/cost.vue'
@@ -21,6 +21,8 @@ import { GetCpcShipRateOfMonth, GetShipRateOfWeek, GetCpcWarehouseRateOfMonth, G
   const Lingliao = ref([])
   const profit = ref([])
 
+  let intervalID = null
+
 
   onMounted(()=>{
     height.value = card.value.$el.clientHeight -40
@@ -29,7 +31,22 @@ import { GetCpcShipRateOfMonth, GetShipRateOfWeek, GetCpcWarehouseRateOfMonth, G
     _GetShipRateOfWeek()
     _GetCpcWarehouseRateOfMonth()
     _GetShipDiffDetailOfWeek()
+
+    intervalID = setInterval(function(){
+      _GetCpcShipRateOfMonth()
+      _GetShipRateOfWeek()
+      _GetCpcWarehouseRateOfMonth()
+      _GetShipDiffDetailOfWeek()
+    }, 120000)
   })
+
+  onUnmounted(()=>{
+    clearInterval(intervalID)
+    intervalID = null
+  })
+
+
+
 
   const _GetCpcShipRateOfMonth=()=> {
     GetCpcShipRateOfMonth().then(res=>{
