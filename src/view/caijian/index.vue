@@ -13,7 +13,7 @@
   import axios from 'axios'
   import { dataFormatter } from './utils'
   import { pxtorem } from './utils'
-import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp } from '../../../api/index'
+import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjBadrate } from '../../../api/index'
 
   const card = ref(null)
   const height = ref(0)
@@ -21,6 +21,7 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp } from '../../../api/in
   const tableData = ref([])
   const Lingliao = ref([])
   const profit = ref([])
+  const badrate = ref([])
   let intervalID = null
 
 
@@ -30,12 +31,14 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp } from '../../../api/in
     _GetCjPgdetail()
         _GetWeekRate()
         _GetCjbp()
+        _GetCjBadrate()
 
      intervalID = setInterval(function(){
       _GetDayRate()
     _GetCjPgdetail()
         _GetWeekRate()
         _GetCjbp()
+        _GetCjBadrate()
       }, 120000)
 
    
@@ -70,6 +73,17 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp } from '../../../api/in
       tableData.value = res.concat([{},{},{},{},{},{},{},{},{},{}]).slice(0, 6)
     })
   }
+  const _GetCjBadrate =()=>{
+    GetCjBadrate().then(res=>{
+      let obj = {}
+      // 根据id重复去重
+      res = res.reduce(function (item, next) {
+          obj[next.fabrics] ? '' : obj[next.fabrics] = true && item.push(next)
+          return item
+      }, [])
+      badrate.value = res.sort(function(a,b){return a.rate-b.rate})
+    })
+  }
 
 </script>
 
@@ -99,9 +113,9 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp } from '../../../api/in
         
         <div class="row">
           <Profit class="item canvas" :height="height" :tableData="profit"/>
-          <div>
-            <Liabilities class="item table" :tableData="tableData"  />
-            <Liab class="item" :tableData="tableData"  />
+          <div class="btnCrad table">
+            <Liabilities class="items left" :tableData="tableData"  />
+            <Liab class="items liab" :tableData="badrate"  :height="height" />
           </div>
          
         </div>
@@ -117,5 +131,12 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp } from '../../../api/in
 
 <style scoped lang="scss">
   @import "./index";
+
+  .btnCrad{
+  }
+
+  .left{
+    width: 68%;
+  }
   
 </style>

@@ -40,7 +40,7 @@
     });
     
     chart.data(props.tableData)
-    chart.scale('actualQty', {
+    chart.scale('progress', {
         min: 0,
         max: props.tableData[0].qty,
     });
@@ -55,7 +55,7 @@
 
     // chart.legend('name', false)
 
-    chart.axis('actualQty', {
+    chart.axis('progress', {
       label: {
         formatter: text => {
           return '';
@@ -99,7 +99,7 @@
     })
     
     chart.interval()
-    .position('lineName*actualQty')
+    .position('lineName*progress')
 
     .color('color', v => {
       return v;
@@ -131,11 +131,11 @@
 
 
     props.tableData.forEach((item) => {
-      const t= ((item.actualQty*100)/item.qty).toFixed()+'%'
+      const t= item.progress+'%'
       chart
         .annotation()
         .text({
-          position: [item.lineName, item.actualQty],
+          position: [item.lineName, item.progress],
           content: t,
           style: {
             textAlign: 'center',

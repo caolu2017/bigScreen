@@ -40,17 +40,7 @@ export default{
 
   console.log('ssssfabu', props.fabu)
     chart.data(props.fabu)
-    // chart.scale('sales', {
-    //   nice: true,
-    // });
-
-    // chart.appendPadding = 20
-
     chart.tooltip(false);
-    // chart.legend('type', false);
-    // chart.coordinate('rect').transpose();
-    // chart.interaction('active-region');
-
     chart.coordinate('theta', {
       radius: 0.75
     });

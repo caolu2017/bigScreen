@@ -56,24 +56,7 @@
       }
     });
     chart.legend(false)
-    // chart.legend({
-    //   position: 'right-top',
-    //   offsetY: 20,
-    //   custom: true,
-    //   items: [{id:0, name:'当周达成率',marker:{symbol:'square', style:{fill: '#039EC8'}}},
-    //   {id:1, name:'累積件數達成率',marker:{symbol:'square', style:{fill: '#fff'}}}],
-    //   itemName: {
-    //     style: (item, index: number, items)=>{
-    //       return {
-    //         fill: '#fff',
-    //         fontWeight: 700,
-    //         cursor:'pointer',
-    //         fontSize:  14,
-    //       }
-
-    //     }
-    //   },
-    // })
+   
     chart.tooltip({
       shared: true,
       showMarkers: false,
@@ -112,7 +95,6 @@
   view2.data(ds);
   view2
     .line()
-   
     .position('wk*rate')
     .style({
       stroke: '#fff',

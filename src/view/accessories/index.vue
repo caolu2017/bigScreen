@@ -105,11 +105,11 @@ let intervalID = null
       
       profit.value = res.map(r=>{
         console.log('ddfdf', r)
-        const v = ((r.actualQty*100)/r.qty).toFixed()
+        // const v = ((r.actualQty*100)/r.qty).toFixed()
         let c = ''
-        if (v-80<=0) {
+        if (r.progress-80<=0) {
           c= '#C8033E';
-        }else if(v-90>=0){
+        }else if(r.progress-90>=0){
           c= '#039EC8';
         }else {
           c= '#EBAF00';

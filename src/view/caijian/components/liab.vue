@@ -24,26 +24,26 @@ watch(
   (newValue, oldValue) => {
     if (!props.height || props.tableData.length == 0) return;
 
-    if (chart) {
-      chart.changeData(props.tableData);
-      return;
-    }
+    chart&&chart.destroy()
 
     chart = new Chart({
-      container: "profit",
+      container: "liab",
       autoFit: true,
       height: props.height,
     });
+
     chart.data(props.tableData);
     chart.scale("rate", {
       min: 0,
-      max: 1,
+      max: props.tableData[props.tableData.length-1].rate,
     });
     
-    chart.appendPadding = 20;
+    chart.appendPadding = [10, 30, 10, 10];
     chart.tooltip(false);
 
-    chart.axis("actualQty", {
+    chart.axis("rate", {
+       tickLine: null,
+  line: null,
       label: {
         formatter: (text) => {
           return "";
@@ -53,13 +53,15 @@ watch(
         line: {
           style: {
             stroke: "#fff",
-            lineWidth: 0.5,
+            lineWidth: 0,
           },
         },
       },
     });
     chart.legend(false);
-    chart.axis("rate", {
+    chart.axis("fabrics", {
+       tickLine: null,
+  line: null,
       label: {
         formatter: (text) => {
           return "";
@@ -68,7 +70,7 @@ watch(
       grid: {
         line: {
           style: {
-            opacity: 0.4,
+            opacity: 0,
           },
         },
       },
@@ -86,16 +88,14 @@ watch(
       },
     });
 
-      chart.coordinate().transpose();
-      .position("wk*rate")
-      .color("#18BF3B")
-      .adjust("stack")
-      .label("rate", (val, a) => {
+      chart.coordinate().transpose()
+      chart.interval().position("fabrics*rate")
+      .color("#C8033E")
+      .label("fabrics", (val, a) => {
         const color = "white";
         return {
-          position: "top",
-          content: val*100+'%',
-          autoRotate: false,
+          position: "middle",
+          content: val,
           style: {
             fontSize: 14,
             fontWeight: 700,
@@ -108,6 +108,24 @@ watch(
         };
       });
 
+    props.tableData.forEach((item) => {
+      const t= item.rate +'%'
+      chart
+        .annotation()
+        .text({
+          position: [item.fabrics, item.rate],
+          content: t,
+          style: {
+            textAlign: 'center',
+            fontSize: 14,
+            stroke: '#fff',
+            fontWeight: 700,
+            fill: '#fff'
+          },
+          offsetX: 15,
+        })
+    });
+
     chart.removeInteraction("active-region");
 
     chart.render();
@@ -119,7 +137,7 @@ watch(
 <template>
   <div style="position: relative">
     <chartTitle :title="'布种不良率'" />
-    <div id="profit"></div>
+    <div id="liab"></div>
   </div>
 </template>
 

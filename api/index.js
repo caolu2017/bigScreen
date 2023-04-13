@@ -76,4 +76,7 @@ import { post, get } from './httpService'
  export function GetCjbp (data) {
   return get('/api/1/dashboard/cj/GetCjbp', data)
 }
+ export function GetCjBadrate (data) {
+  return get('/api/1/dashboard/cj/GetCjBadrate', data)
+}
  

@@ -24,23 +24,12 @@
     height: 320,
   })
 
-  const fruits = [
-    {year: '2022.05', value: 260 },
-    { year: '2022.06', value: 210 },
-    { year: '2022.07', value: 160 },
-    { year: '2022.08', value: 60 },
-    {  year: '2022.09', value: 160 },
-  ];
-
   let chart = null
 
   watch(() => [props.height, props.tableData], (newValue, oldValue) => {
     if(!props.height||props.tableData.length==0) return
 
-    if(chart){
-      chart.changeData(props.tableData)
-      return
-    }
+    chart&&chart.destroy()
 
     chart = new Chart({
       container: 'profit',
@@ -48,7 +37,7 @@
       height: props.height,
     });
     chart.data(props.tableData)
-    chart.scale('actualQty', {
+    chart.scale('progress', {
         min: 0,
         max: props.tableData[0].qty,
     });
@@ -59,11 +48,7 @@
     chart.appendPadding = 20
     chart.tooltip(false);
 
-    console.log('fffaaa', props.tableData[0].qty)
-
-    // chart.legend('name', false)
-
-    chart.axis('actualQty', {
+    chart.axis('progress', {
       label: {
         formatter: text => {
           return '';
@@ -107,7 +92,7 @@
     })
     
     chart.interval()
-    .position('lineName*actualQty')
+    .position('lineName*progress')
 
     .color('color', v => {
       return v;
@@ -139,11 +124,11 @@
 
 
     props.tableData.forEach((item) => {
-      const t= ((item.actualQty*100)/item.qty).toFixed()+'%'
+      const t= item.progress+'%'
       chart
         .annotation()
         .text({
-          position: [item.lineName, item.actualQty],
+          position: [item.lineName, item.progress],
           content: t,
           style: {
             textAlign: 'center',

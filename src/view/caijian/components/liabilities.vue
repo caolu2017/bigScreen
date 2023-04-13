@@ -64,34 +64,34 @@ export default{
             <div class="txt">{{ scope.row['woNo']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="fabrics" label="布种" >
+        <el-table-column prop="fabrics" label="布种" width="60">
           <template #default="scope">
-            <div>{{ scope.row['fabrics']||'-' }}</div>
+            <div class="txt">{{ scope.row['fabrics']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="pcs" label="数量">
+        <el-table-column prop="pcs" label="数量" width="80">
           <template #default="scope">
-            <div>{{ scope.row['pcs']||'-' }}</div>
+            <div class="txt">{{ scope.row['pcs']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="sizeCode" label="尺寸" width="80">
+        <el-table-column prop="sizeCode" label="尺寸" width="60">
           <template #default="scope">
-            <div>{{ scope.row['sizeCode']||'-' }}</div>
+            <div class="txt">{{ scope.row['sizeCode']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="clrNo" label="颜色">
+        <el-table-column prop="clrNo" label="颜色" width="60">
           <template #default="scope">
-            <div>{{ scope.row['clrNo']||'-' }}</div>
+            <div class="txt">{{ scope.row['clrNo']||'-' }}</div>
           </template>
           </el-table-column>
         <el-table-column prop="bpDate" label="补片日">
           <template #default="scope">
-            <div>{{ scope.row['bpDate']||'-' }}</div>
+            <div class="txt">{{ scope.row['bpDate']||'-' }}</div>
           </template>
           </el-table-column>
         <el-table-column prop="finishDate" label="完成日">
           <template #default="scope">
-            <div>{{ scope.row['finishDate']||'-' }}</div>
+            <div class="txt">{{ scope.row['finishDate']||'-' }}</div>
           </template>
           </el-table-column>
       </el-table>
