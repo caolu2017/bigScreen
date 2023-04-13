@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-12 16:17:59
+ * @LastEditTime: 2023-04-13 15:14:50
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -56,13 +56,12 @@ export default{
 </script>
 
 <template>
-  <div>
-    <chartTitle :title="'待补片明细'" />
-    <div id="container" >
-      <el-table :data="tableData" style="width: 100%" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
-        <el-table-column prop="cntrNo" label="工单号" >
+    <div>
+      <chartTitle :title="'待补片明细'" />
+      <el-table :data="tableData" style="flex: 1" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
+        <el-table-column prop="woNo" label="工单号" >
           <template #default="scope">
-            <div class="txt">{{ scope.row['cntrNo']||'-' }}</div>
+            <div class="txt">{{ scope.row['woNo']||'-' }}</div>
           </template>
         </el-table-column>
         <el-table-column prop="fabrics" label="布种" >
@@ -70,41 +69,43 @@ export default{
             <div>{{ scope.row['fabrics']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="colorName" label="数量">
+        <el-table-column prop="pcs" label="数量">
           <template #default="scope">
-            <div>{{ scope.row['colorName']||'-' }}</div>
+            <div>{{ scope.row['pcs']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="qty" label="尺寸" width="80">
+        <el-table-column prop="sizeCode" label="尺寸" width="80">
           <template #default="scope">
-            <div>{{ scope.row['qty']||'-' }}</div>
+            <div>{{ scope.row['sizeCode']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column class="last" prop="planArriveDate" label="颜色">
+        <el-table-column prop="clrNo" label="颜色">
           <template #default="scope">
-            <div>{{ scope.row['planArriveDate']||'-' }}</div>
+            <div>{{ scope.row['clrNo']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column class="last" prop="planArriveDate" label="开立日期">
+        <el-table-column prop="bpDate" label="补片日">
           <template #default="scope">
-            <div>{{ scope.row['planArriveDate']||'-' }}</div>
+            <div>{{ scope.row['bpDate']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column class="last" prop="planArriveDate" label="完成日期">
+        <el-table-column prop="finishDate" label="完成日">
           <template #default="scope">
-            <div>{{ scope.row['planArriveDate']||'-' }}</div>
+            <div>{{ scope.row['finishDate']||'-' }}</div>
           </template>
           </el-table-column>
       </el-table>
     </div>
-  </div>
   
 </template>
 
 
 
 <style scoped lang="scss">
-
+.right{
+  width: 228px;
+  margin-left: 20px;
+}
 .txt{
   white-space: nowrap;
     overflow: hidden;

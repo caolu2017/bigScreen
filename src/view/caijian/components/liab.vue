@@ -1,13 +1,6 @@
-<!--
- * @Author: caolu 64294@yangzijiang.com
- * @Date: 2023-01-06 13:53:19
- * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-13 14:44:48
- * @Description: 利润总额
--->
 <script lang="ts">
 export default {
-  name: "Profit",
+  name: "Lib",
 };
 </script>
 <script setup lang="ts">
@@ -93,8 +86,7 @@ watch(
       },
     });
 
-    chart
-      .line()
+      chart.coordinate().transpose();
       .position("wk*rate")
       .color("#18BF3B")
       .adjust("stack")
@@ -126,7 +118,7 @@ watch(
 
 <template>
   <div style="position: relative">
-    <chartTitle :title="'当周连成率趋势'" />
+    <chartTitle :title="'布种不良率'" />
     <div id="profit"></div>
   </div>
 </template>

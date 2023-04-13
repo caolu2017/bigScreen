@@ -61,3 +61,19 @@ import { post, get } from './httpService'
   return get('/api/1/dashboard/wl/GetEffCounts', data)
 }
  
+ export function GetDayRate (data) {
+  return get('/api/1/dashboard/cj/GetDayRate', data)
+}
+ 
+ export function GetCjPgdetail (data) {
+  return get('/api/1/dashboard/cj/GetCjPgdetail', data)
+}
+ 
+ export function GetWeekRate (data) {
+  return get('/api/1/dashboard/cj/GetWeekRate', data)
+}
+ 
+ export function GetCjbp (data) {
+  return get('/api/1/dashboard/cj/GetCjbp', data)
+}
+ 

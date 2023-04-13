@@ -25,6 +25,7 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
 
   onMounted(()=>{
     height.value = card.value.$el.clientHeight -40
+    console.log('card', card.value.$el.clientHeight)
      _getFabu()
         _GetLingliao()
         _GetFaliao()

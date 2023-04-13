@@ -39,18 +39,47 @@ watch(
       autoFit: true,
       height: props.height,
     });
-
+    chart.scale('qty', {
+        min: 0,
+        max: 1,
+    });
+    chart.axis('rate', {
+      label: {
+        formatter: text => {
+          return '';
+        }
+      },
+      grid: {
+        line: {
+          style: {
+            stroke: '#fff',
+            lineWidth: 0,
+          }
+        }
+      }
+    });
+    chart.axis('machineName', {
+      label: {
+        style: {
+          fill: '#FFFFFF',
+          opacity: 1,
+          fontSize:16,
+          fontWeight: 700,
+          fontFamily: 'D-DIN',
+        }
+      },
+    })
     chart.data(props.fabu);
     chart.appendPadding = 20;
     chart.tooltip(false);
-    chart
-      .interval()
+    chart.interval()
+      .position('machineName*rate')
       .adjust("stack")
-      .position("value")
-      .color("city", ["#039EC8", "#EBAF00", "#FF7500", "#C8033E"])
-      .label("value", (val, t) => {
+      .color("#18BF3B")
+      .label("rate", (val, t) => {
         return {
           offset: -30,
+          position: 'middle',
           content: (val * 100).toFixed() + "%",
           style: {
             fontSize: 20,

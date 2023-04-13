@@ -31,13 +31,13 @@ const height = ref(0);
 const fabu = ref([]);
 const tableData = ref([]);
 const Lingliao = ref([]);
-const profit = ref([]);
 const revenue = ref([]);
 const revenueList = ref([]);
 let intervalID = null;
 
 onMounted(() => {
   height.value = card.value.$el.clientHeight - 40;
+  console.log('card', card.value.$el.clientHeight)
   _GetWlTask();
   _GetLessthan3d();
   _GetWlInv();
@@ -75,27 +75,27 @@ const _GetWlInv = () => {
 const _GetEffCounts = () => {
   GetEffCounts().then((res) => {
     revenue.value = res;
-    const arr = []
-    for(let i in res){
-      arr.push({value: res[i], city: getfilter(i, res)})
+    const arr = [];
+    for (let i in res) {
+      arr.push({ value: res[i], city: getfilter(i, res) });
     }
     revenueList.value = arr;
-    console.log('bbbbbbbbb',revenue.value,  arr)
+    console.log("bbbbbbbbb", revenue.value, arr);
   });
 };
 
-const getfilter = (i, res)=>{
-  console.log('haha', i, res)
-  if(i=='lessthanten'){
-    return '< 10 分钟'
-  }else if(i=='graterthanten'){
-    return '> 10 分钟'
-  }else if (i=='granterthan60'){
-    return '> 60 分钟'
-  }else if (i=='granterthan30'){
-    return '> 30 分钟'
+const getfilter = (i, res) => {
+  console.log("haha", i, res);
+  if (i == "lessthanten") {
+    return "< 10 分钟";
+  } else if (i == "graterthanten") {
+    return "> 10 分钟";
+  } else if (i == "granterthan60") {
+    return "> 60 分钟";
+  } else if (i == "granterthan30") {
+    return "> 30 分钟";
   }
-}
+};
 </script>
 
 <template>
@@ -113,9 +113,8 @@ const getfilter = (i, res)=>{
 
         <div class="charts-part">
           <div class="row">
-            <Liabilities class="item" :tableData="fabu" />
-
-            <Cost class="item table" :Lingliao="Lingliao" :height="height" />
+            <Liabilities class="item" :tableData="fabu" :height="height" />
+            <Cost ref="card" class="item table" :Lingliao="Lingliao" :height="height" />
           </div>
 
           <div class="row">
@@ -125,7 +124,6 @@ const getfilter = (i, res)=>{
               :tableData="tableData"
             />
             <Revenue
-              ref="card"
               :height="height"
               class="item table"
               :fabu="revenue"

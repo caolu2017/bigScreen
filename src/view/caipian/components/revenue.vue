@@ -33,16 +33,20 @@ watch(
       return;
     }
 
+    const total = props.revenueList.map(i=>i.value).reduce((a,b)=>(a+b), 0)
+
+    console.log('合计', total)
+
     chart = new Chart({
       container: "revenue",
       autoFit: true,
-      height: props.height - 80,
+      height: props.height,
     });
-console.log('revenueList', props.revenueList)
+    console.log("revenueList", props.revenueList);
     chart.data(props.revenueList);
     chart.tooltip(false);
     chart.coordinate("theta", {
-      radius: 1,
+      radius: 0.78,
     });
 
     chart
@@ -53,7 +57,7 @@ console.log('revenueList', props.revenueList)
       .label("value", (val, t) => {
         return {
           offset: -30,
-          content: val?val + "%":'',
+          content: val ? ((val*100)/total).toFixed(2) + "%" : "",
           style: {
             fontSize: 20,
             fontWeight: 500,
@@ -66,8 +70,6 @@ console.log('revenueList', props.revenueList)
 
     chart.legend("city", {
       position: "right",
-      // offsetX: -80,
-      // offsetY: 16,
       itemName: {
         style: (item, index: number, items) => {
           return {
@@ -92,10 +94,18 @@ onMounted(() => {});
     <chartTitle :title="'物流运送效率'" />
     <div class="tabs-box">
       <div class="tabs">
-        <p>{{ "< 10 minute:" }} <span>{{props.fabu.lessthanten}}次</span></p>
-        <p>{{ "> 10 minute:" }} <span>{{ props.fabu.graterthanten }}次</span></p>
-        <p>{{ "> 30 minute:" }} <span>{{ props.fabu.granterthan30 }}次</span></p>
-        <p>{{ "> 60 minute:" }} <span>{{ props.fabu.granterthan60 }}次</span></p>
+        <p>
+          {{ "< 10 minute:" }} <span>{{ props.fabu.lessthanten }}次</span>
+        </p>
+        <p>
+          {{ "> 10 minute:" }} <span>{{ props.fabu.graterthanten }}次</span>
+        </p>
+        <p>
+          {{ "> 30 minute:" }} <span>{{ props.fabu.granterthan30 }}次</span>
+        </p>
+        <p>
+          {{ "> 60 minute:" }} <span>{{ props.fabu.granterthan60 }}次</span>
+        </p>
       </div>
       <div id="revenue"></div>
     </div>
@@ -108,7 +118,8 @@ onMounted(() => {});
 .tabs-box {
   display: flex;
   align-items: flex-start;
-  padding: 32px 32px;
+  // padding: 32px 32px;
+  // box-sizing: border-box;
 }
 
 #revenue {
@@ -121,6 +132,7 @@ onMounted(() => {});
   border-radius: 12px;
   padding: 24px 30px;
   width: 240px;
+  margin-top: 32px;
   color: #fff;
   box-sizing: border-box;
 
@@ -131,7 +143,6 @@ onMounted(() => {});
 
   p:not(:last-child) {
     margin-bottom: 18px;
-    
   }
   // position: relative;
   // top: 40px;

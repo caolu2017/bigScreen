@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-11 15:22:53
+ * @LastEditTime: 2023-04-13 14:52:45
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -33,7 +33,7 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'当天领布清单与配布完成'" />
+    <chartTitle :title="'当天领布清单与配布完成进度'" />
     <div id="container" :style="{'height':height-10+'px'}">
       <el-table :data="Lingliao" style="width: 100%" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
         <el-table-column prop="woNo" label="工单号" width="180" />

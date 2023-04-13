@@ -103,7 +103,7 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'派工单完成情况（周）'" />
+    <chartTitle :title="'己派工,发布完成(派工完成天数)'" />
     <div id="revenue"></div>
   </div>
 </template>

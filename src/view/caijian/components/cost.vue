@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-12 16:34:40
+ * @LastEditTime: 2023-04-13 14:43:58
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -29,7 +29,7 @@ onMounted(() => {});
 
 <template>
   <div>
-    <chartTitle :title="'已派工完成明细（订单/款号）'" />
+    <chartTitle :title="'已派工未完成明细（订单/款号）'" />
     <div id="container" :style="{ height: height - 10 + 'px' }">
       <el-table
         :data="Lingliao"
@@ -39,20 +39,14 @@ onMounted(() => {});
           color: '#fff',
         }"
       >
-        <el-table-column prop="cntrNo" label="工单号">
+        <el-table-column prop="woNo" label="工单号">
           <template #default="scope">
-            <div class="txt">{{ scope.row["cntrNo"] || "-" }}</div>
+            <div class="txt">{{ scope.row["woNo"] || "-" }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="po" label="工单日期">
+        <el-table-column prop="pgDate" label="派工日">
           <template #default="scope">
-            <div class="txt">{{ scope.row["po"] || "-" }}</div>
-          </template>
-        </el-table-column>
-
-        <el-table-column prop="matNo" label="款号">
-          <template #default="scope">
-            <div class="txt">{{ scope.row["matNo"] || "-" }}</div>
+            <div class="txt">{{ scope.row["pgDate"] || "-" }}</div>
           </template>
         </el-table-column>
         <el-table-column prop="fabrics" label="布种">
@@ -60,24 +54,24 @@ onMounted(() => {});
             <div>{{ scope.row["fabrics"] || "-" }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="colorName" label="工单数量">
-          <template #default="scope">
-            <div>{{ scope.row["colorName"] || "-" }}</div>
-          </template>
-        </el-table-column>
-        <el-table-column prop="qty" label="床数" width="80">
+        <el-table-column prop="qty" label="件数">
           <template #default="scope">
             <div>{{ scope.row["qty"] || "-" }}</div>
           </template>
         </el-table-column>
-        <el-table-column class="last" prop="planArriveDate" label="需求日">
+        <el-table-column prop="cjQty" label="裁剪床数">
           <template #default="scope">
-            <div>{{ scope.row["planArriveDate"] || "-" }}</div>
+            <div>{{ scope.row["cjQty"] || "-" }}</div>
           </template>
         </el-table-column>
-        <el-table-column class="last" prop="planArriveDate" label="备注">
+        <el-table-column class="last" prop="defDate" label="需求日">
           <template #default="scope">
-            <div>{{ scope.row["planArriveDate"] || "-" }}</div>
+            <div>{{ scope.row["defDate"] || "-" }}</div>
+          </template>
+        </el-table-column>
+        <el-table-column prop="rmks" label="备注">
+          <template #default="scope">
+            <div>{{ scope.row["rmks"] || "-" }}</div>
           </template>
         </el-table-column>
       </el-table>
@@ -102,9 +96,6 @@ onMounted(() => {});
   border-bottom: 0 !important;
 }
 
-:deep(tbody .el-table_1_column_3 .cell) {
-  padding: 0 !important;
-}
 
 :deep(.el-table tr) {
   background-color: transparent !important;
@@ -121,12 +112,8 @@ onMounted(() => {});
   padding: 0 !important;
 }
 
-:deep(tbody .el-table_1_column_4) {
-  border: 0;
-}
-:deep(tbody .el-table_1_column_4 .cell) {
-  padding: 0 !important;
-}
+
+
 :deep(.el-table tbody .cell) {
   // height: 100%;
   line-height: inherit;

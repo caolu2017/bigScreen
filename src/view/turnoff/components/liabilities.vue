@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-12 14:00:57
+ * @LastEditTime: 2023-04-13 14:59:50
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -57,7 +57,7 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'即将到厂物料'" />
+    <chartTitle :title="'本周出货订单差异明细'" />
     <div id="container" >
       <el-table :data="tableData" style="width: 100%" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
         <el-table-column prop="shipNo" label="出货订单号" >

@@ -27,11 +27,8 @@ export default{
 
     console.log('ssssprops.fabu', props.fabu)
     if(!newValue||props.fabu.length==0) return 
-
-    if(chart){
-      chart.changeData(props.fabu)
-      return
-    }
+const ds = props.fabu.filter(i=>i.type=='b')
+chart&&chart.destroy()
     
      chart = new Chart({
       container: 'revenue',
@@ -112,7 +109,7 @@ export default{
     };
   });
 
-  const ds = props.fabu.filter(i=>i.type=='b')
+  
 
 const view2 = chart.createView();
 view2.axis(false);

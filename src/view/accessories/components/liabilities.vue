@@ -36,16 +36,17 @@ export default{
             <div>{{ scope.row['matNo']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="specification" label="规格">
-          <template #default="scope">
-            <div>{{ scope.row['specification']||'-' }}</div>
-          </template>
-        </el-table-column>
         <el-table-column prop="name" label="名称">
           <template #default="scope">
             <div >{{ scope.row['name']||'-' }}</div>
           </template>
         </el-table-column>
+        <el-table-column prop="specification" label="规格">
+          <template #default="scope">
+            <div>{{ scope.row['specification']||'-' }}</div>
+          </template>
+        </el-table-column>
+       
 
         <el-table-column prop="qty" label="数量">
           <template #default="scope">

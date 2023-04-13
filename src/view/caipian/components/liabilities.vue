@@ -9,6 +9,7 @@ import chartTitle from "./chartTitle.vue";
 
 interface costProps {
   tableData: () => [];
+  height: number
 }
 
 const props = withDefaults(defineProps<costProps>(), {
@@ -40,12 +41,12 @@ onMounted(() => {});
             <div>{{ scope.row["styleNo"] || "-" }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="qty" label="叫料数">
+        <el-table-column prop="qty" label="需求量">
           <template #default="scope">
             <div>{{ scope.row["qty"] || "-" }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="wip" label="车缝当前WIP">
+        <el-table-column prop="wip" label="车缝WIP">
           <template #default="scope">
             <div>{{ scope.row["wip"] || "-" }}</div>
           </template>

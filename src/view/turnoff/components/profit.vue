@@ -18,14 +18,12 @@
   })
 
   let chart = null
+  let view2 = null
 
   watch(() => [props.height, props.tableData], (newValue, oldValue) => {
     if(!props.height||props.tableData.length==0) return
-
-     if(chart){
-      chart.changeData(props.tableData)
-      return
-    }
+    const ds = props.tableData.filter(i=>i.type=='b')
+    chart&&chart.destroy()
     
      chart = new Chart({
       container: 'profit',
@@ -107,9 +105,9 @@
     };
   });
 
-  const ds = props.tableData.filter(i=>i.type=='b')
+ 
 
-  const view2 = chart.createView();
+  view2 = chart.createView();
   view2.axis(false);
   view2.data(ds);
   view2
