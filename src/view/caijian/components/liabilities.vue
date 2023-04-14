@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-13 15:14:50
+ * @LastEditTime: 2023-04-14 15:54:00
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -64,7 +64,7 @@ export default{
             <div class="txt">{{ scope.row['woNo']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="fabrics" label="布种" width="60">
+        <el-table-column prop="fabrics" label="布种" width="80">
           <template #default="scope">
             <div class="txt">{{ scope.row['fabrics']||'-' }}</div>
           </template>
@@ -74,12 +74,12 @@ export default{
             <div class="txt">{{ scope.row['pcs']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="sizeCode" label="尺寸" width="60">
+        <el-table-column prop="sizeCode" label="尺寸" width="80">
           <template #default="scope">
             <div class="txt">{{ scope.row['sizeCode']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="clrNo" label="颜色" width="60">
+        <el-table-column prop="clrNo" label="颜色" width="80">
           <template #default="scope">
             <div class="txt">{{ scope.row['clrNo']||'-' }}</div>
           </template>

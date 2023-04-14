@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:53:19
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-13 14:44:48
+ * @LastEditTime: 2023-04-14 15:53:14
  * @Description: 利润总额
 -->
 <script lang="ts">
@@ -126,7 +126,7 @@ watch(
 
 <template>
   <div style="position: relative">
-    <chartTitle :title="'当周连成率趋势'" />
+    <chartTitle :title="'当周达成率趋势'" />
     <div id="profit"></div>
   </div>
 </template>

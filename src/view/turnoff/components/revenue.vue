@@ -109,7 +109,6 @@ chart&&chart.destroy()
     };
   });
 
-  
 
 const view2 = chart.createView();
 view2.axis(false);
@@ -120,7 +119,6 @@ view2.line()
   .label('rate', (val) => {
     return {
       position: 'top',
-      offsetY: -10,
       content: (originData) => {
         return originData.type=='b'?(originData.sumRate?(originData.sumRate*100) + '%':''):'';
       },

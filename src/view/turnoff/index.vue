@@ -60,7 +60,7 @@ import { GetCpcShipRateOfMonth, GetShipRateOfWeek, GetCpcWarehouseRateOfMonth, G
           rate: 100, 
           type: 'a', 
           },
-          {...i,type:'b' ,rate:Number(i.rate)},
+          {...i,type:'b' ,rate:Number(i.rate), sumRate: Number(i.sumRate)},
           
         )
       })
