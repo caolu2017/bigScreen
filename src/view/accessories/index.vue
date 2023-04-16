@@ -10,8 +10,7 @@
 	import Cost from './components/cost.vue'
 	import Liabilities from './components/liabilities.vue'
   import axios from 'axios'
-  import { dataFormatter } from './utils'
-  import { pxtorem } from './utils'
+  import { pxtorem } from '../utils'
 import { GetPgFinish, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMaterialPlan } from '../../../api/index'
 
   const card = ref(null)
@@ -23,7 +22,7 @@ import { GetPgFinish, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMateria
 let intervalID = null
 
   onMounted(()=>{
-    height.value = card.value.$el.clientHeight -40
+    height.value = card.value.$el.clientHeight - pxtorem(54)
      _GetPgFinish()
     _GetFlPgLessthan3dByLine()
     _GetFlFaliaoProgress()
@@ -105,14 +104,16 @@ let intervalID = null
       
       profit.value = res.map(r=>{
         console.log('ddfdf', r)
-        // const v = ((r.actualQty*100)/r.qty).toFixed()
+        const p = Number(r.progress)
         let c = ''
-        if (r.progress-80<=0) {
-          c= '#C8033E';
-        }else if(r.progress-90>=0){
+        if(p>=90){
           c= '#039EC8';
-        }else {
+        }else if(p>=80&&p<90){
           c= '#EBAF00';
+        }else if(p>=65&&p<80){
+          c= '#FF7500';
+        }else {
+          c= '#C8033E';
         }
 
         return{

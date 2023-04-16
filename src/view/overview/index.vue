@@ -10,8 +10,7 @@
 	import Cost from './components/cost.vue'
 	import Liabilities from './components/liabilities.vue'
   import axios from 'axios'
-  import { dataFormatter } from './utils'
-  import { pxtorem } from './utils'
+  import { pxtorem } from '../utils'
 import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/index'
 
   const card = ref(null)
@@ -24,8 +23,8 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
 
 
   onMounted(()=>{
-    height.value = card.value.$el.clientHeight -40
-    console.log('card', card.value.$el.clientHeight)
+    height.value = card.value.$el.clientHeight - pxtorem(54)
+   
      _getFabu()
         _GetLingliao()
         _GetFaliao()
@@ -72,9 +71,6 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
       for(let key  in res){
         arr.push({'city': filterDay(key), 'value': Number(res[key])})
       }
-
-      console.log('arrarr', arr)
-      
       fabu.value = arr
     })
   }
@@ -87,17 +83,17 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
   }
   const _GetFaliao =()=>{
     GetFaliao().then(res=>{
-      
       profit.value = res.map(r=>{
-        console.log('ddfdf', r)
-        // const v = ((r.actualQty*100)/r.qty).toFixed()
+        const p = Number(r.progress)
         let c = ''
-        if (r.progress-80<=0) {
-          c= '#C8033E';
-        }else if(r.progress-90>=0){
+        if(p>=90){
           c= '#039EC8';
-        }else {
+        }else if(p>=80&&p<90){
           c= '#EBAF00';
+        }else if(p>=65&&p<80){
+          c= '#FF7500';
+        }else {
+          c= '#C8033E';
         }
 
         return{
@@ -110,22 +106,6 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
     GetMaterialPlan().then(res=>{
       tableData.value = res.concat([{},{},{},{},{},{},{},{},{},{}]).slice(0, 6)
       console.log('cvcvcv', tableData.value)
-      
-      // .map(r=>{
-      //   const v = ((r.actualQty*100)/r.qty).toFixed()
-      //   let c = ''
-      //   if (v-80<=0) {
-      //     c= '#C8033E';
-      //   }else if(v-90>=0){
-      //     c= '#039EC8';
-      //   }else {
-      //     c= '#EBAF00';
-      //   }
-
-      //   return{
-      //   ...ref, 
-      //   color: c
-      // }})
     })
   }
 
@@ -138,10 +118,8 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
       <div ref="top">
         <div class="top">
           <div class="part">
-            <!-- <div class="cn">SAC DASHBOARD</div> -->
           </div>
         </div>
-        <!-- <img class="top-img" src="@/assets/img/sss.svg" alt=""> -->
       </div>
       
 

@@ -20,6 +20,7 @@ export default{
   const propsHeight = ref(0)
 
   let chart = null
+  let cot = ref(null)
 
   watch(() => [props.height, props.fabu], (newValue, oldValue) => {
     propsHeight.value = newValue[0]
@@ -94,7 +95,7 @@ export default{
 <template>
   <div>
     <chartTitle :title="'己派工,发布完成(派工完成天数)'" />
-    <div id="revenue"></div>
+    <div id="revenue" ref="cot"></div>
   </div>
 </template>
 

@@ -22,7 +22,7 @@
 
   watch(() => [props.height, props.tableData], (newValue, oldValue) => {
     if(!props.height||props.tableData.length==0) return
-    const ds = props.tableData.filter(i=>i.type=='b')
+    const ds = props.tableData.filter(i=>i.type!='a').map(i=>({...i, rate: i.rate==0?null:i.rate}))
     chart&&chart.destroy()
     
      chart = new Chart({
@@ -65,10 +65,10 @@
   .interval()
   .position('wk*rate')
   .color('type', (t)=>{
-    if(t=='b'){
-      return '#039EC8'
-    }else{
+    if(t=='a'){
       return '#052735'
+    }else{
+      return t
     }
   })
   // .color('type', ['#039EC8', '#FFD9BF'])
@@ -78,7 +78,7 @@
       position: 'middle',
       offset: 0,
       content: (originData) => {
-        return originData.type=='b'?(originData.rate? originData.rate+ '%':''):'';
+        return originData.type!='a'?(originData.rate? originData.rate+ '%':''):'';
       },
       style: {
         fill: '#fff',

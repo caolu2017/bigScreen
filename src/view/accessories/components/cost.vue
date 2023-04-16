@@ -89,10 +89,10 @@ export default{
     chart.interval()
     .position('lineName*days')
     .color('days', v => {
-      if(Number(v[1])<3){
+      if(Number(v[1])<=3){
         return '#C8033E';
       }else{
-        return '#EBAF00';
+        return '#039EC8';
       }
       
     })

@@ -11,8 +11,7 @@
 	import Liabilities from './components/liabilities.vue'
 	import Liab from './components/liab.vue'
   import axios from 'axios'
-  import { dataFormatter } from './utils'
-  import { pxtorem } from './utils'
+  import { pxtorem } from '../utils'
 import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjBadrate } from '../../../api/index'
 
   const card = ref(null)
@@ -26,7 +25,7 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjBadrate } from '.
 
 
   onMounted(()=>{
-    height.value = card.value.$el.clientHeight -40
+    height.value = card.value.$el.clientHeight - pxtorem(54)
     _GetDayRate()
     _GetCjPgdetail()
         _GetWeekRate()
@@ -53,7 +52,23 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjBadrate } from '.
   const _GetDayRate=()=> {
     GetDayRate().then(res=>{
       console.log('res', res)
-      fabu.value = res
+      fabu.value = res.map(r=>{
+        const p = Number(r.rate)*100
+        let c = ''
+        if(p>=90){
+          c= '#039EC8';
+        }else if(p>=80&&p<90){
+          c= '#EBAF00';
+        }else if(p>=65&&p<80){
+          c= '#FF7500';
+        }else {
+          c= '#C8033E';
+        }
+        return {
+          ...r,
+          color: c
+        }
+      })
     })
   }
 

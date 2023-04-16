@@ -75,7 +75,9 @@ watch(
     chart.interval()
       .position('machineName*rate')
       .adjust("stack")
-      .color("#18BF3B")
+      .color('color', v => {
+      return v;
+    })
       .label("rate", (val, t) => {
         return {
           offset: -30,
@@ -106,6 +108,7 @@ watch(
         },
       },
     });
+    chart.legend("color", false);
     chart.removeInteraction("active-region");
     chart.render();
   }

@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-13 14:52:45
+ * @LastEditTime: 2023-04-15 18:24:18
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -29,6 +29,18 @@ export default{
   onMounted(()=>{
    
     })
+
+  const  getColor = (p)=>{
+    if(p>=90){
+      return'#039EC8';
+    }else if(p>=80&&p<90){
+      return '#EBAF00';
+    }else if(p>=65&&p<80){
+      return '#FF7500';
+    }else {
+      return '#C8033E';
+    }
+  }
 </script>
 
 <template>
@@ -41,7 +53,7 @@ export default{
         
         <el-table-column prop="progress" class="process" label="进度">
           <template #default="scope">
-            <div v-if="scope.row['progress']" class="progress" :style="{'width':scope.row['progress']+'%' }">{{ scope.row['progress'] }}%</div>
+            <div v-if="scope.row['progress']" class="progress" :style="{'width':scope.row['progress']+'%', background:getColor(scope.row['progress'])  }">{{ scope.row['progress'] }}%</div>
             <div v-else>-</div>
           </template>
         </el-table-column>

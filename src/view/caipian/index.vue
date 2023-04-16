@@ -17,8 +17,7 @@ import Revenue from "./components/revenue.vue";
 import Cost from "./components/cost.vue";
 import Liabilities from "./components/liabilities.vue";
 import axios from "axios";
-import { dataFormatter } from "./utils";
-import { pxtorem } from "./utils";
+import { pxtorem } from "../utils";
 import {
   GetWlTask,
   GetWlInv,
@@ -36,7 +35,7 @@ const revenueList = ref([]);
 let intervalID = null;
 
 onMounted(() => {
-  height.value = card.value.$el.clientHeight - 40;
+  height.value = card.value.$el.clientHeight - pxtorem(54);
   console.log('card', card.value.$el.clientHeight)
   _GetWlTask();
   _GetLessthan3d();
@@ -76,11 +75,16 @@ const _GetEffCounts = () => {
   GetEffCounts().then((res) => {
     revenue.value = res;
     const arr = [];
-    for (let i in res) {
-      arr.push({ value: res[i], city: getfilter(i, res) });
-    }
+    // for (let i in res) {
+    //   console.log("bbbbbbbbb", res, i);
+    //   arr.push({ value: res[i], city: getfilter(i, res) });
+    // }
+    arr[0] = { value: res['lessthanten'], city: getfilter('lessthanten', res) }
+    arr[1] = { value: res['graterthanten'], city: getfilter('graterthanten', res) }
+    arr[2] = { value: res['granterthan30'], city: getfilter('granterthan30', res) }
+    arr[3] = { value: res['granterthan60'], city: getfilter('granterthan60', res) }
     revenueList.value = arr;
-    console.log("bbbbbbbbb", revenue.value, arr);
+   
   });
 };
 

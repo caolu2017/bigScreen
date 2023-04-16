@@ -10,8 +10,7 @@
 	import Cost from './components/cost.vue'
 	import Liabilities from './components/liabilities.vue'
   import axios from 'axios'
-  import { dataFormatter } from './utils'
-  import { pxtorem } from './utils'
+  import { pxtorem } from '../utils'
 import { GetCpcShipRateOfMonth, GetShipRateOfWeek, GetCpcWarehouseRateOfMonth, GetShipDiffDetailOfWeek } from '../../../api/index'
 
   const card = ref(null)
@@ -25,7 +24,7 @@ import { GetCpcShipRateOfMonth, GetShipRateOfWeek, GetCpcWarehouseRateOfMonth, G
 
 
   onMounted(()=>{
-    height.value = card.value.$el.clientHeight -40
+    height.value = card.value.$el.clientHeight - pxtorem(54)
 
     _GetCpcShipRateOfMonth()
     _GetShipRateOfWeek()
@@ -60,7 +59,7 @@ import { GetCpcShipRateOfMonth, GetShipRateOfWeek, GetCpcWarehouseRateOfMonth, G
           rate: 100, 
           type: 'a', 
           },
-          {...i,type:'b' ,rate:Number(i.rate), sumRate: Number(i.sumRate)},
+          {...i,type:getColor(i.rate) ,rate:Number(i.rate), sumRate: Number(i.sumRate)},
           
         )
       })
@@ -72,25 +71,52 @@ import { GetCpcShipRateOfMonth, GetShipRateOfWeek, GetCpcWarehouseRateOfMonth, G
 
   const _GetShipRateOfWeek =()=>{
     GetShipRateOfWeek().then(res=>{
-      console.log('ccc', res)
-      Lingliao.value = res
+      Lingliao.value = res.map(r=>{
+        const p = Number(r.rate)
+        let c = ''
+        if(p>=90){
+          c= '#039EC8';
+        }else if(p>=80&&p<90){
+          c= '#EBAF00';
+        }else if(p>=65&&p<80){
+          c= '#FF7500';
+        }else {
+          c= '#C8033E';
+        }
+        return {
+          ...r,
+          color: c
+        }
+      })
     })
+  }
+
+  const getColor=(p)=>{
+    let c = ''
+      if(p>=90){
+        c = '#039EC8';
+      }else if(p>=80&&p<90){
+        c = '#EBAF00';
+      }else if(p>=65&&p<80){
+        c = '#FF7500';
+      }else {
+        c = '#C8033E';
+      }
+      return c
   }
   const _GetCpcWarehouseRateOfMonth =()=>{
     GetCpcWarehouseRateOfMonth().then(res=>{
       const arr = []
-      
+
       res.forEach((i, wk)=>{
         arr.push(
-          {
-          ...i, 
-          rate: 100, 
-          type: 'a', 
-          },
-          {...i,type:'b' ,rate:Number(i.rate)},
+          {...i,  rate: 100,  type: 'a'},
+          {...i,type:getColor(i.rate) ,rate:Number(i.rate) },
           
         )
       })
+
+      console.log('arrarrarr', arr)
       profit.value = arr
     })
   }

@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-12 14:05:29
+ * @LastEditTime: 2023-04-15 18:09:52
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -28,23 +28,6 @@ export default{
   })
 
   let chart = null
-
-//  var data = [{
-//     country: '巴西',
-//     population: 18203
-//   }, {
-//     country: '印尼',
-//     population: 23489
-//   }, {
-//     country: '美国',
-//     population: 29034
-//   }, {
-//     country: '印度',
-//     population: 104970
-//   }, {
-//     country: '中国',
-//     population: 131744
-//   }];
 
   watch(() => [props.height, props.Lingliao], (newValue, oldValue) => {
     if(props.Lingliao.length==0)return
@@ -108,6 +91,10 @@ export default{
   chart.coord().transpose();
   chart.interval()
   .position('shipNo*rate')
+  .color('color',(c)=>{
+    return c
+  })
+  
   .label('rate*shipNo', (val, a) => {
     return {
       position: 'right',
@@ -124,6 +111,7 @@ export default{
       },
     };
   });
+  chart.legend('color', false)
   chart.render();
   })
   onMounted(()=>{

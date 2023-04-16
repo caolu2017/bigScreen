@@ -27,7 +27,8 @@ export default{
 
     console.log('ssssprops.fabu', props.fabu)
     if(!newValue||props.fabu.length==0) return 
-const ds = props.fabu.filter(i=>i.type=='b')
+const ds = props.fabu.filter(i=>i.type!='a').map(i=>({...i, sumRate: i.sumRate==0?null:i.sumRate}))
+console.log('hahahah', ds)
 chart&&chart.destroy()
     
      chart = new Chart({
@@ -86,10 +87,10 @@ chart&&chart.destroy()
   .interval()
   .position('wk*rate')
   .color('type', (t)=>{
-    if(t=='b'){
-      return '#039EC8'
+    if(t=='a'){
+      return '#052735'
     }else{
-      return '#FFD9BF'
+      return t
     }
   })
   // .color('type', ['#039EC8', '#FFD9BF'])
@@ -99,7 +100,7 @@ chart&&chart.destroy()
       position: 'middle',
       offset: 0,
       content: (originData) => {
-        return originData.type=='b'?originData.rate?(originData.rate + '%'):'':'';
+        return originData.type!='a'?originData.rate?(originData.rate + '%'):'':'';
       },
       style: {
         fill: '#fff',
@@ -116,11 +117,11 @@ view2.data(ds);
 view2.line()
   .position('wk*sumRate')
   .color('#FF7500')
-  .label('rate', (val) => {
+  .label('sumRate', (val) => {
     return {
       position: 'top',
       content: (originData) => {
-        return originData.type=='b'?(originData.sumRate?(originData.sumRate*100) + '%':''):'';
+        return originData.type!='a'?(originData.sumRate?(originData.sumRate*100) + '%':''):'';
       },
       style: {
         fill: '#fff',

@@ -53,7 +53,7 @@ watch(
       .interval()
       .adjust("stack")
       .position("value")
-      .color("city", ["#18BF3B", "#039EC8", "#EBAF00", "#C8033E"])
+      .color("city", ['#039EC8', '#EBAF00', '#FF7500', '#C8033E'])
       .label("value", (val, t) => {
         return {
           offset: -30,
