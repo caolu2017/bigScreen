@@ -46,12 +46,12 @@ export default{
 <template>
   <div>
     <chartTitle :title="'当天领布清单与配布完成进度'" />
-    <div id="container" :style="{'height':height-10+'px'}">
+    <div id="container" >
       <el-table :data="Lingliao" style="width: 100%" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
         <el-table-column prop="woNo" label="工单号" width="180" />
         <el-table-column prop="styleNo" label="款号" width="120" />
         
-        <el-table-column prop="progress" class="process" label="进度">
+        <el-table-column prop="progress" class="process11" label="进度">
           <template #default="scope">
             <div v-if="scope.row['progress']" class="progress" :style="{'width':scope.row['progress']+'%', background:getColor(scope.row['progress'])  }">{{ scope.row['progress'] }}%</div>
             <div v-else>-</div>
@@ -81,6 +81,9 @@ export default{
   }
 
   :deep(tbody .el-table_1_column_3 .cell){
+    padding: 0!important;
+  }
+  :deep(tbody tr td:nth-child(3) .cell){
     padding: 0!important;
   }
 

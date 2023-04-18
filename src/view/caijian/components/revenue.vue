@@ -90,28 +90,25 @@ watch(
       .interval()
       .position("lineName*days")
       .color("days", (v) => {
-        if (Number(v[1]) <= 2) {
+        if (Number(v[1]) >3) {
           return "#C8033E";
         } else {
           return "#039EC8";
         }
       })
       .adjust("stack")
-      .label("styleNo", (val, a) => {
+      .label("days", (val, a) => {
         const color = "white";
         return {
-          position: "middle",
-          content: val,
-          autoRotate: false,
-          rotate: 45,
-          style: {
-            fontSize: 12,
-            fill: color,
-            lineWidth: 0,
-            stroke: null,
-            shadowBlur: 2,
-            shadowColor: "rgba(0, 0, 0, .45)",
-          },
+          position: 'top',
+      content: val,
+      offsetY: 10,
+      style: {
+        fontSize:16,
+          fontWeight: 700,
+          fontFamily: 'D-DIN',
+        fill: color,
+      },
         };
       });
 
