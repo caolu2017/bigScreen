@@ -11,7 +11,7 @@
 	import Liabilities from './components/liabilities.vue'
   import axios from 'axios'
   import { pxtorem } from '../utils'
-import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/index'
+import { getFabu, GetLingliao, GetFaliao, GetZlflPlan } from '../../../api/index'
 
   const card = ref(null)
   const height = ref(0)
@@ -27,14 +27,12 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
    
      _getFabu()
         _GetLingliao()
-        _GetFaliao()
-        _GetMaterialPlan()
+        _GetZlflPlan()
 
      intervalID = setInterval(function(){
          _getFabu()
         _GetLingliao()
-        _GetFaliao()
-        _GetMaterialPlan()
+        _GetZlflPlan()
       }, 120000)
 
    
@@ -102,8 +100,8 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
       }})
     })
   }
-  const _GetMaterialPlan =()=>{
-    GetMaterialPlan().then(res=>{
+  const _GetZlflPlan =()=>{
+    GetZlflPlan().then(res=>{
       tableData.value = res.concat([{},{},{},{},{},{},{},{},{},{}]).slice(0, 6)
       console.log('cvcvcv', tableData.value)
     })
@@ -134,8 +132,8 @@ import { getFabu, GetLingliao, GetFaliao, GetMaterialPlan } from '../../../api/i
         </div>
         
         <div class="row">
-          <Profit class="item canvas" :height="height" :tableData="profit"/>
-          <Liabilities class="item table" :tableData="tableData"  />
+          <!-- <Profit class="item canvas" :height="height" :tableData="profit"/> -->
+          <Liabilities class="item table line" :tableData="tableData"  />
         </div>
       </div>
     </div>

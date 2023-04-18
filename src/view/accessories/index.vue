@@ -11,7 +11,7 @@
 	import Liabilities from './components/liabilities.vue'
   import axios from 'axios'
   import { pxtorem } from '../utils'
-import { GetPgFinish, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, GetFlMaterialPlan } from '../../../api/index'
+import { GetPgFinish, GetFlPgLessthan3dByLine, GetFlFaliaoProgress, flGetFlflPlan } from '../../../api/index'
 
   const card = ref(null)
   const height = ref(0)
@@ -25,14 +25,14 @@ let intervalID = null
     height.value = card.value.$el.clientHeight - pxtorem(54)
      _GetPgFinish()
     _GetFlPgLessthan3dByLine()
-    _GetFlFaliaoProgress()
-    _GetFlMaterialPlan()
+    // _GetFlFaliaoProgress()
+    _flGetFlflPlan()
 
     intervalID = setInterval(function(){
         _GetPgFinish()
     _GetFlPgLessthan3dByLine()
-    _GetFlFaliaoProgress()
-    _GetFlMaterialPlan()
+    // _GetFlFaliaoProgress()
+    _flGetFlflPlan()
       }, 120000)
 
    
@@ -122,8 +122,8 @@ let intervalID = null
       }})
     })
   }
-  const _GetFlMaterialPlan =()=>{
-    GetFlMaterialPlan().then(res=>{
+  const _flGetFlflPlan =()=>{
+    flGetFlflPlan().then(res=>{
       console.log('ggg', res)
       tableData.value = res.concat([{},{},{},{},{},{},{},{},{},{}]).slice(0, 6)
     })
@@ -156,8 +156,8 @@ let intervalID = null
         </div>
         
         <div class="row">
-          <Profit class="item canvas" :height="height" :tableData="profit"/>
-          <Liabilities class="item table" :tableData="tableData"  />
+          <!-- <Profit class="item canvas" :height="height" :tableData="profit"/> -->
+          <Liabilities class="item table line" :tableData="tableData"  />
         </div>
       </div>
     </div>

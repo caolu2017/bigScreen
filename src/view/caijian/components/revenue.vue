@@ -5,32 +5,28 @@ export default {
 </script>
 <script setup lang="ts">
 import { computed, onMounted, watch, ref, toRefs } from "vue";
-import { Chart } from "@antv/g2";
 import chartTitle from "./chartTitle.vue";
+import { Chart } from "@antv/g2";
 
 interface costProps {
+  Lingliao: () => [];
   height: number;
-  fabu: () => [];
 }
 
 const props = withDefaults(defineProps<costProps>(), {
+  Lingliao: [],
   height: 320,
 });
-
-const propsHeight = ref(0);
 
 let chart = null;
 
 watch(
-  () => [props.height, props.fabu],
+  () => [props.height, props.Lingliao],
   (newValue, oldValue) => {
-    propsHeight.value = newValue[0];
-
-    console.log("ssss", props.height, newValue[0]);
-    if (!newValue || props.fabu.length == 0) return;
+    if (!props.height || props.Lingliao.length == 0) return;
 
     if (chart) {
-      chart.changeData(props.fabu);
+      chart.changeData(props.Lingliao);
       return;
     }
 
@@ -39,92 +35,101 @@ watch(
       autoFit: true,
       height: props.height,
     });
-    chart.scale('qty', {
-        min: 0,
-        max: 1,
+
+    console.log("props.Lingliao", props.Lingliao);
+    chart.data(props.Lingliao);
+    chart.scale("days", {
+      min: 0,
+      max: 5,
     });
-    chart.axis('rate', {
+
+    chart.appendPadding = 20;
+    chart.tooltip(false);
+
+    chart.axis("days", {
       label: {
-        formatter: text => {
-          return '';
-        }
+        formatter: (text) => {
+          console.log("text", text);
+          if (text == 3 || text == 5) {
+            return text;
+          }
+          return "";
+        },
+        style: {
+          fill: "#FFFFFF",
+          fontFamily: "D-DIN",
+          fontSize: 16,
+          fontWeight: 700,
+        },
       },
       grid: {
         line: {
           style: {
-            stroke: '#fff',
-            lineWidth: 0,
-          }
-        }
-      }
+            stroke: "#fff",
+            opacity: 0.5,
+            lineWidth: 0.5,
+            lineDash: [5, 5, 5],
+          },
+        },
+      },
     });
-    chart.axis('machineName', {
+    chart.legend(false);
+    chart.axis("lineName", {
       label: {
         style: {
-          fill: '#FFFFFF',
+          fill: "#FFFFFF",
           opacity: 1,
-          fontSize:16,
+          fontSize: 16,
           fontWeight: 700,
-          fontFamily: 'D-DIN',
-        }
+          fontFamily: "D-DIN",
+        },
       },
-    })
-    chart.data(props.fabu);
-    chart.appendPadding = 20;
-    chart.tooltip(false);
-    chart.interval()
-      .position('machineName*rate')
+    });
+
+    chart
+      .interval()
+      .position("lineName*days")
+      .color("days", (v) => {
+        if (Number(v[1]) <= 2) {
+          return "#C8033E";
+        } else {
+          return "#039EC8";
+        }
+      })
       .adjust("stack")
-      .color('color', v => {
-      return v;
-    })
-      .label("rate", (val, t) => {
+      .label("styleNo", (val, a) => {
+        const color = "white";
         return {
-          offset: -30,
-          position: 'middle',
-          content: (val * 100).toFixed() + "%",
+          position: "middle",
+          content: val,
+          autoRotate: false,
+          rotate: 45,
           style: {
-            fontSize: 20,
-            fontWeight: 500,
-            fill: "#fff",
+            fontSize: 12,
+            fill: color,
+            lineWidth: 0,
+            stroke: null,
             shadowBlur: 2,
             shadowColor: "rgba(0, 0, 0, .45)",
           },
         };
       });
 
-    chart.legend("city", {
-      position: "right",
-      offsetX: -80,
-      // offsetY: 16,
-      itemName: {
-        style: (item, index: number, items) => {
-          return {
-            fill: "#fff",
-            fontWeight: 700,
-            cursor: "pointer",
-            fontSize: 20,
-          };
-        },
-      },
-    });
-    chart.legend("color", false);
     chart.removeInteraction("active-region");
+
     chart.render();
   }
-);
-
-onMounted(() => {});
+),
+  onMounted(() => {});
 </script>
 
 <template>
   <div>
-    <chartTitle :title="'当天裁床达成率'" />
+    <chartTitle :title="'库存天数'" />
     <div id="revenue"></div>
   </div>
 </template>
 
 
 
-<style scoped lang="scss">
-</style>
+

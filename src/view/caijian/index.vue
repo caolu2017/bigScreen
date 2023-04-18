@@ -12,7 +12,7 @@
 	import Liab from './components/liab.vue'
   import axios from 'axios'
   import { pxtorem } from '../utils'
-import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjBadrate } from '../../../api/index'
+import { GetLessthan3d, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjPlan } from '../../../api/index'
 
   const card = ref(null)
   const height = ref(0)
@@ -26,18 +26,18 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjBadrate } from '.
 
   onMounted(()=>{
     height.value = card.value.$el.clientHeight - pxtorem(54)
-    _GetDayRate()
-    _GetCjPgdetail()
-        _GetWeekRate()
-        _GetCjbp()
-        _GetCjBadrate()
+    _GetLessthan3d()
+    // _GetCjPgdetail()
+        // _GetWeekRate()
+        _GetCjPlan()
+        // _GetCjBadrate()
 
      intervalID = setInterval(function(){
-      _GetDayRate()
-    _GetCjPgdetail()
-        _GetWeekRate()
-        _GetCjbp()
-        _GetCjBadrate()
+      _GetLessthan3d()
+    // _GetCjPgdetail()
+        // _GetWeekRate()
+        _GetCjPlan()
+        // _GetCjBadrate()
       }, 120000)
 
    
@@ -49,26 +49,10 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjBadrate } from '.
  })
 
 
-  const _GetDayRate=()=> {
-    GetDayRate().then(res=>{
+  const _GetLessthan3d=()=> {
+    GetLessthan3d().then(res=>{
       console.log('res', res)
-      fabu.value = res.map(r=>{
-        const p = Number(r.rate)*100
-        let c = ''
-        if(p>=90){
-          c= '#039EC8';
-        }else if(p>=80&&p<90){
-          c= '#EBAF00';
-        }else if(p>=65&&p<80){
-          c= '#FF7500';
-        }else {
-          c= '#C8033E';
-        }
-        return {
-          ...r,
-          color: c
-        }
-      })
+      fabu.value = res
     })
   }
 
@@ -83,8 +67,8 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjBadrate } from '.
       profit.value = res
     })
   }
-  const _GetCjbp =()=>{
-    GetCjbp().then(res=>{
+  const _GetCjPlan =()=>{
+    GetCjPlan().then(res=>{
       tableData.value = res.concat([{},{},{},{},{},{},{},{},{},{}]).slice(0, 6)
     })
   }
@@ -121,17 +105,17 @@ import { GetDayRate, GetCjPgdetail, GetWeekRate, GetCjbp, GetCjBadrate } from '.
           <Revenue 
           ref="card"
           :height="height"
-          class="item canvas"
-          :fabu="fabu"  />
-          <Cost class="item table" :Lingliao="Lingliao" :height="height" />
+          class="item table line"
+          :Lingliao="fabu"  />
+          <!-- <Cost class="item table line" :Lingliao="Lingliao" :height="height" /> -->
         </div>
         
         <div class="row">
-          <Profit class="item canvas" :height="height" :tableData="profit"/>
-          <div class="btnCrad table">
-            <Liabilities class="items left" :tableData="tableData"  />
-            <Liab class="items liab" :tableData="badrate"  :height="height" />
-          </div>
+          <!-- <Profit class="item canvas" :height="height" :tableData="profit"/> -->
+          <!-- <div class="btnCrad table"> -->
+            <Liabilities class="item table line" :tableData="tableData"  />
+            <!-- <Liab class="items liab" :tableData="badrate"  :height="height" /> -->
+          <!-- </div> -->
          
         </div>
       </div>

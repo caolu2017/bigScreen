@@ -1,10 +1,3 @@
-<!--
- * @Author: caolu 64294@yangzijiang.com
- * @Date: 2023-01-06 13:54:15
- * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-13 15:03:44
- * @Description: 营业总收入
--->
 <script lang="ts">
 export default{
   name: 'Liabilities'
@@ -24,32 +17,6 @@ export default{
     tableData: [],
     height: 320
   })
-  // const tableData =  [{
-  //           date: '2016-05-02',
-  //           name: '王小虎',
-  //           address: '上海市普陀'
-  //         }, {
-  //           date: '2016-05-04',
-  //           name: '王小虎',
-  //           address: '上海市普陀区金'
-  //         }, {
-  //           date: '2016-05-01',
-  //           name: '王小虎',
-  //           address: '上海市普陀区金沙江'
-  //         }, {
-  //           date: '2016-05-03',
-  //           name: '王小虎',
-  //           address: '上海市普陀区金'
-  //         },{
-  //           date: '2016-05-01',
-  //           name: '王小虎',
-  //           address: '上海市普陀区金沙江'
-  //         },{
-  //           date: '2016-05-01',
-  //           name: '王小虎',
-  //           address: '上海市普陀区'
-  //         },];
-
   onMounted(()=>{
    
     })
@@ -57,43 +24,63 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'即将到厂物料'" />
+    <chartTitle :title="'发料计划'" />
     <div id="container" >
       <el-table :data="tableData" style="width: 100%" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
-        <el-table-column prop="cntrNo" label="柜号" >
+        <el-table-column prop="woNo" label="工单" >
           <template #default="scope">
-            <div class="txt">{{ scope.row['cntrNo']||'-' }}</div>
+            <div class="txt">{{ scope.row['woNo']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="po" label="PO" >
+        <el-table-column prop="monthbuy" label="月BUY" width="100">
           <template #default="scope">
-            <div class="txt">{{ scope.row['po']||'-' }}</div>
+            <div class="txt">{{ scope.row['monthbuy']||'-' }}</div>
           </template>
         </el-table-column>
 
-        <el-table-column prop="matNo" label="料号">
+        <el-table-column prop="styleNo" label="款号">
           <template #default="scope">
-            <div class="txt">{{ scope.row['matNo']||'-' }}</div>
+            <div class="txt">{{ scope.row['styleNo']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="fabrics" label="布种" >
+        <el-table-column prop="templateNo" label="版号" >
           <template #default="scope">
-            <div>{{ scope.row['fabrics']||'-' }}</div>
+            <div>{{ scope.row['templateNo']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="colorName" label="颜色">
-          <template #default="scope">
-            <div>{{ scope.row['colorName']||'-' }}</div>
-          </template>
-          </el-table-column>
-        <el-table-column prop="qty" label="总码数" width="80">
+        <el-table-column prop="qty" label="件数">
           <template #default="scope">
             <div>{{ scope.row['qty']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column class="last" prop="planArriveDate" label="预计到厂日期">
+        <el-table-column prop="odNo" label="订单号">
           <template #default="scope">
-            <div>{{ scope.row['planArriveDate']||'-' }}</div>
+            <div>{{ scope.row['odNo']||'-' }}</div>
+          </template>
+          </el-table-column>
+        <el-table-column prop="partNo" label="料号">
+          <template #default="scope">
+            <div>{{ scope.row['partNo']||'-' }}</div>
+          </template>
+          </el-table-column>
+        <el-table-column prop="vendor" label="厂商">
+          <template #default="scope">
+            <div>{{ scope.row['vendor']||'-' }}</div>
+          </template>
+          </el-table-column>
+        <el-table-column prop="clrNo" label="色号">
+          <template #default="scope">
+            <div>{{ scope.row['clrNo']||'-' }}</div>
+          </template>
+          </el-table-column>
+        <el-table-column prop="usageQty" label="用量">
+          <template #default="scope">
+            <div>{{ scope.row['usageQty']||'-' }}</div>
+          </template>
+          </el-table-column>
+        <el-table-column prop="defDate" label="交期">
+          <template #default="scope">
+            <div>{{ scope.row['defDate']||'-' }}</div>
           </template>
           </el-table-column>
       </el-table>

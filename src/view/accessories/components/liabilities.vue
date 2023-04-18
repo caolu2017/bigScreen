@@ -23,39 +23,64 @@ export default{
 
 <template>
   <div>
-    <chartTitle :title="'最近到厂辅料信息'" />
+    <chartTitle :title="'发料计划'" />
     <div id="container">
       <el-table :data="tableData" style="width: 100%" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
-        <el-table-column prop="cntrNo" label="货柜号" width="120">
+        <el-table-column prop="groupname" label="组别">
           <template #default="scope">
-            <div>{{ scope.row['cntrNo']||'-' }}</div>
+            <div>{{ scope.row['groupname']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="matNo" label="料号">
+        <el-table-column prop="monthbuy" label="月BUY">
           <template #default="scope">
-            <div>{{ scope.row['matNo']||'-' }}</div>
+            <div>{{ scope.row['monthbuy']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="name" label="名称">
+        <el-table-column prop="styleNo" label="款号">
           <template #default="scope">
-            <div >{{ scope.row['name']||'-' }}</div>
+            <div >{{ scope.row['styleNo']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="specification" label="规格">
+        <el-table-column prop="odQty" label="订单数量">
           <template #default="scope">
-            <div>{{ scope.row['specification']||'-' }}</div>
+            <div>{{ scope.row['odQty']||'-' }}</div>
           </template>
         </el-table-column>
        
 
+        <el-table-column prop="clrNo" label="色组">
+          <template #default="scope">
+            <div>{{ scope.row['clrNo']||'-' }}</div>
+          </template>
+        </el-table-column>
+        <el-table-column prop="vendor" label="厂商">
+          <template #default="scope">
+            <div>{{ scope.row['vendor']||'-' }}</div>
+          </template>
+        </el-table-column>
+        <el-table-column prop="partNo" label="料号">
+          <template #default="scope">
+            <div>{{ scope.row['partNo']||'-' }}</div>
+          </template>
+        </el-table-column>
+        <el-table-column prop="colorNo" label="色号">
+          <template #default="scope">
+            <div>{{ scope.row['colorNo']||'-' }}</div>
+          </template>
+        </el-table-column>
+        <el-table-column prop="units" label="用量单位">
+          <template #default="scope">
+            <div>{{ scope.row['units']||'-' }}</div>
+          </template>
+        </el-table-column>
+        <el-table-column prop="sizeCode" label="尺寸">
+          <template #default="scope">
+            <div>{{ scope.row['sizeCode']||'-' }}</div>
+          </template>
+        </el-table-column>
         <el-table-column prop="qty" label="数量">
           <template #default="scope">
             <div>{{ scope.row['qty']||'-' }}</div>
-          </template>
-        </el-table-column>
-        <el-table-column prop="planArriveDate" label="预计到厂日期">
-          <template #default="scope">
-            <div>{{ scope.row['planArriveDate']||'-' }}</div>
           </template>
         </el-table-column>
       </el-table>

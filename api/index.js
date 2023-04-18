@@ -80,3 +80,13 @@ import { post, get } from './httpService'
   return get('/api/1/dashboard/cj/GetCjBadrate', data)
 }
  
+ export function GetZlflPlan (data) {
+  return get('/api/1/dashboard/GetZlflPlan', data)
+}
+ export function flGetFlflPlan (data) {
+  return get('/api/1/dashboard/fl/GetFlflPlan', data)
+}
+ export function GetCjPlan (data) {
+  return get('/api/1/dashboard/cj/GetCjPlan', data)
+}
+ 

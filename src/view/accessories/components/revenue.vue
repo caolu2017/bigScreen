@@ -62,7 +62,7 @@ export default{
     .label('value', (val, t) => {
       return {
         offset: -30,
-        content: (val*100).toFixed() + '%',
+        content: val?(val*100).toFixed() + '%':'',
         style: {
           fontSize: 20,
           fontWeight: 500,

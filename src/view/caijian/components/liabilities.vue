@@ -2,7 +2,7 @@
  * @Author: caolu 64294@yangzijiang.com
  * @Date: 2023-01-06 13:54:15
  * @LastEditors: caolu 64294@yangzijiang.com
- * @LastEditTime: 2023-04-14 15:54:00
+ * @LastEditTime: 2023-04-18 17:32:44
  * @Description: 营业总收入
 -->
 <script lang="ts">
@@ -57,41 +57,61 @@ export default{
 
 <template>
     <div>
-      <chartTitle :title="'待补片明细'" />
+      <chartTitle :title="'裁剪计划'" />
       <el-table :data="tableData" style="flex: 1" :header-cell-style="{ background: 'rgba(250, 250, 250, 0.3)', color: '#fff' }">
-        <el-table-column prop="woNo" label="工单号" >
+        <el-table-column prop="groupname" label="组别" >
           <template #default="scope">
-            <div class="txt">{{ scope.row['woNo']||'-' }}</div>
+            <div class="txt">{{ scope.row['groupname']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="fabrics" label="布种" width="80">
+        <el-table-column prop="monthbuy" label="月BUY">
           <template #default="scope">
-            <div class="txt">{{ scope.row['fabrics']||'-' }}</div>
+            <div class="txt">{{ scope.row['monthbuy']||'-' }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="pcs" label="数量" width="80">
+        <el-table-column prop="styleNo" label="款号">
           <template #default="scope">
-            <div class="txt">{{ scope.row['pcs']||'-' }}</div>
+            <div class="txt">{{ scope.row['styleNo']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="sizeCode" label="尺寸" width="80">
+        <el-table-column prop="producttypename" label="产品类别">
           <template #default="scope">
-            <div class="txt">{{ scope.row['sizeCode']||'-' }}</div>
+            <div class="txt">{{ scope.row['producttypename']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="clrNo" label="颜色" width="80">
+        <el-table-column prop="templateNo" label="版号">
           <template #default="scope">
-            <div class="txt">{{ scope.row['clrNo']||'-' }}</div>
+            <div class="txt">{{ scope.row['templateNo']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="bpDate" label="补片日">
+        <el-table-column prop="odQty" label="订单数量">
           <template #default="scope">
-            <div class="txt">{{ scope.row['bpDate']||'-' }}</div>
+            <div class="txt">{{ scope.row['odQty']||'-' }}</div>
           </template>
           </el-table-column>
-        <el-table-column prop="finishDate" label="完成日">
+        <el-table-column prop="sbDate" label="松布日期">
           <template #default="scope">
-            <div class="txt">{{ scope.row['finishDate']||'-' }}</div>
+            <div class="txt">{{ scope.row['sbDate']||'-' }}</div>
+          </template>
+          </el-table-column>
+        <el-table-column prop="sampleConfirmDate" label="样本确认日">
+          <template #default="scope">
+            <div class="txt">{{ scope.row['sampleConfirmDate']||'-' }}</div>
+          </template>
+          </el-table-column>
+        <el-table-column prop="defDate" label="交期">
+          <template #default="scope">
+            <div class="txt">{{ scope.row['defDate']||'-' }}</div>
+          </template>
+          </el-table-column>
+        <el-table-column prop="matType" label="布种">
+          <template #default="scope">
+            <div class="txt">{{ scope.row['matType']||'-' }}</div>
+          </template>
+          </el-table-column>
+        <el-table-column prop="progress" label="进度">
+          <template #default="scope">
+            <div class="txt">{{ scope.row['progress']||'-' }}</div>
           </template>
           </el-table-column>
       </el-table>
@@ -140,9 +160,9 @@ export default{
     padding: 0!important;
   }
 
-  :deep(tbody .el-table_1_column_4){
-    border:0;
-  }
+  // :deep(tbody .el-table_1_column_4){
+  //   border:0;
+  // }
   
   :deep(.el-table tbody .cell){
     // height: 100%;
